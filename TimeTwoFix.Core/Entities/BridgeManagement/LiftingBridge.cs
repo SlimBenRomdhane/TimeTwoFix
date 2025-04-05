@@ -9,16 +9,12 @@ namespace TimeTwoFix.Core.Entities.BridgeManagement
         [Required]
         [MaxLength(50)]
         public string Name { get; set; }
-
         [Required]
         [MaxLength(50)]
         public string Location { get; set; }
-
         public DateTime? InstallationDate { get; set; }
-
         [MaxLength(50)]
         public string Status { get; set; }
-
         public decimal LoadCapacity { get; set; } // in tons
         public ICollection<Intervention> Interventions { get; set; }
     }
