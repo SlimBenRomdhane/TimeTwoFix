@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
-using TimeTwoFix.Core.Common;
 
 namespace TimeTwoFix.Core.Entities.IdentityManagement
 {
@@ -22,9 +21,19 @@ namespace TimeTwoFix.Core.Entities.IdentityManagement
         public string City { get; set; }
 
         public int PostalCode { get; set; }
-        public string ImageUrl { get; set; }
+        public string? ImageUrl { get; set; }
+
+        [Required]
         public DateTime HireDate { get; set; }
+
         public decimal HourlyWage { get; set; }
+
+        [Range(0, 50)]
+        public int yearsOfExperience { get; set; }
+
+        [Required]
+        [MaxLength(50)]
+        public string LastEmployer { get; set; }
 
         //Indicates if the user is currently employed, on leave, or terminated...
         [Required]

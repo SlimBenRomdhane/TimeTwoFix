@@ -9,5 +9,7 @@ namespace TimeTwoFix.Core.Entities.IdentityManagement
 
         [MaxLength(50)]
         public string? WarehouseLocation { get; set; }
+
+        public bool AbleToShift { get; set; }
     }
 }

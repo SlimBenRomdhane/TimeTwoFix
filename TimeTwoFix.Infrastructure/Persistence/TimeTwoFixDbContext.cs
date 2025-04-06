@@ -11,7 +11,7 @@ using TimeTwoFix.Core.Entities.SparePartManagement;
 using TimeTwoFix.Core.Entities.VehicleManagement;
 using TimeTwoFix.Core.Entities.WorkOrderManagement;
 
-namespace TimeTwoFix.Infrastructure.Persistence.Repositories
+namespace TimeTwoFix.Infrastructure.Persistence
 {
     public class TimeTwoFixDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, int>
     {
@@ -35,6 +35,7 @@ namespace TimeTwoFix.Infrastructure.Persistence.Repositories
         public DbSet<Mechanic> Mechanics { get; set; }
         public DbSet<WareHouseManager> WareHouseManagers { get; set; }
         public DbSet<WorkshopManager> WorkshopManagers { get; set; }
+        public DbSet<GeneralManager> GeneralManagers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -56,7 +57,8 @@ namespace TimeTwoFix.Infrastructure.Persistence.Repositories
                     .HasValue<FrontDeskAssistant>(nameof(FrontDeskAssistant))
                     .HasValue<Mechanic>(nameof(Mechanic))
                     .HasValue<WareHouseManager>(nameof(WareHouseManager))
-                    .HasValue<WorkshopManager>(nameof(WorkshopManager));
+                    .HasValue<WorkshopManager>(nameof(WorkshopManager))
+                    .HasValue<GeneralManager>(nameof(GeneralManager));
             });
             modelBuilder.Entity<ApplicationRole>(x =>
             {

@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using TimeTwoFix.Infrastructure.Persistence.Repositories;
+using TimeTwoFix.Infrastructure.Persistence;
 
 namespace TimeTwoFix.Api
 {

@@ -2,16 +2,16 @@
 {
     public interface IBaseRepository<T> where T : class
     {
-        Task AddAsync(T entity);
+        Task<T> AddAsyncGeneric(T entity);
 
-        Task UpdateAsync(T entity);
+        Task UpdateAsyncGeneric(T entity);
 
-        Task DeleteAsync(T entity);
+        Task DeleteAsyncGeneric(T entity);
 
-        Task<T> GetByIdAsync(int id);
+        Task<T> GetByIdAsyncGeneric(int id);
 
-        Task<IEnumerable<T>> GetAllAsync();
+        Task<IEnumerable<T>> GetAllAsyncGeneric();
 
-        Task<bool> SaveChangesAsync();
+        Task<bool> SaveChangesAsyncGeneric();
     }
 }

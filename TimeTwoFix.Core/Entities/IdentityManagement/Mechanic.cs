@@ -8,7 +8,12 @@ namespace TimeTwoFix.Core.Entities.IdentityManagement
         [MaxLength(50)]
         public string? Specialization { get; set; }
 
-        public string? ToolBoxNumber { get; set; }
+        [Required]
+        [MaxLength(50)]
+        public string ToolBoxNumber { get; set; }
+
+        //Possibilite de deplacement
+        public bool AbleToShift { get; set; }
 
         public ICollection<Intervention> Interventions { get; set; }
     }

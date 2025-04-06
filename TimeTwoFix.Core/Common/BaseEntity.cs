@@ -11,5 +11,11 @@ namespace TimeTwoFix.Core.Common
 
         public DateTime? CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
+
+        [MaxLength(50)]
+        public string? CreatedBy { get; set; }
+
+        [MaxLength(50)]
+        public string? UpdatedBy { get; set; }
     }
 }

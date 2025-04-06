@@ -5,15 +5,15 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using TimeTwoFix.Infrastructure.Persistence.Repositories;
+using TimeTwoFix.Infrastructure.Persistence;
 
 #nullable disable
 
 namespace TimeTwoFix.Infrastructure.Migrations
 {
     [DbContext(typeof(TimeTwoFixDbContext))]
-    [Migration("20250405224929_InitialCatalog")]
-    partial class InitialCatalog
+    [Migration("20250406194254_AppointmentAdjustement")]
+    partial class AppointmentAdjustement
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -155,8 +155,14 @@ namespace TimeTwoFix.Infrastructure.Migrations
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
 
                     b.Property<string>("Notes")
                         .HasMaxLength(255)
@@ -169,10 +175,15 @@ namespace TimeTwoFix.Infrastructure.Migrations
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Urgency")
                         .IsRequired()
@@ -200,11 +211,15 @@ namespace TimeTwoFix.Infrastructure.Migrations
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
                     b.Property<DateTime?>("InstallationDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<decimal>("LoadCapacity")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<int>("LoadCapacity")
+                        .HasColumnType("int");
 
                     b.Property<string>("Location")
                         .IsRequired()
@@ -225,8 +240,17 @@ namespace TimeTwoFix.Infrastructure.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
 
@@ -254,6 +278,10 @@ namespace TimeTwoFix.Infrastructure.Migrations
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -280,6 +308,10 @@ namespace TimeTwoFix.Infrastructure.Migrations
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
 
@@ -352,8 +384,12 @@ namespace TimeTwoFix.Infrastructure.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("ImageUrl")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastEmployer")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("LastName")
                         .IsRequired()
@@ -387,6 +423,9 @@ namespace TimeTwoFix.Infrastructure.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<int>("yearsOfExperience")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedUserName")
@@ -412,6 +451,10 @@ namespace TimeTwoFix.Infrastructure.Migrations
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -428,6 +471,10 @@ namespace TimeTwoFix.Infrastructure.Migrations
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
 
@@ -447,6 +494,10 @@ namespace TimeTwoFix.Infrastructure.Migrations
 
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -471,6 +522,10 @@ namespace TimeTwoFix.Infrastructure.Migrations
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
@@ -489,6 +544,10 @@ namespace TimeTwoFix.Infrastructure.Migrations
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
                     b.Property<int>("MechanicId")
                         .HasColumnType("int");
 
@@ -504,6 +563,10 @@ namespace TimeTwoFix.Infrastructure.Migrations
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<int>("YearsOfExperience")
                         .HasColumnType("int");
@@ -528,6 +591,10 @@ namespace TimeTwoFix.Infrastructure.Migrations
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
@@ -542,6 +609,10 @@ namespace TimeTwoFix.Infrastructure.Migrations
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
 
@@ -558,6 +629,10 @@ namespace TimeTwoFix.Infrastructure.Migrations
 
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -591,6 +666,10 @@ namespace TimeTwoFix.Infrastructure.Migrations
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("PartCode")
@@ -617,6 +696,10 @@ namespace TimeTwoFix.Infrastructure.Migrations
 
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("FuelType")
                         .IsRequired()
@@ -647,6 +730,10 @@ namespace TimeTwoFix.Infrastructure.Migrations
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Vin")
                         .IsRequired()
@@ -680,6 +767,10 @@ namespace TimeTwoFix.Infrastructure.Migrations
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
@@ -704,6 +795,10 @@ namespace TimeTwoFix.Infrastructure.Migrations
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<int>("WorkOrderId")
                         .HasColumnType("int");
@@ -732,6 +827,10 @@ namespace TimeTwoFix.Infrastructure.Migrations
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
                     b.Property<string>("DeliveryNote")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -752,6 +851,10 @@ namespace TimeTwoFix.Infrastructure.Migrations
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
 
@@ -775,6 +878,10 @@ namespace TimeTwoFix.Infrastructure.Migrations
 
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
@@ -800,6 +907,10 @@ namespace TimeTwoFix.Infrastructure.Migrations
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
                     b.Property<int>("VehicleId")
                         .HasColumnType("int");
 
@@ -814,6 +925,9 @@ namespace TimeTwoFix.Infrastructure.Migrations
                 {
                     b.HasBaseType("TimeTwoFix.Core.Entities.IdentityManagement.ApplicationUser");
 
+                    b.Property<bool>("BusinessKnowledge")
+                        .HasColumnType("bit");
+
                     b.Property<string>("PhoneExtension")
                         .HasColumnType("nvarchar(max)");
 
@@ -827,16 +941,34 @@ namespace TimeTwoFix.Infrastructure.Migrations
                     b.HasDiscriminator().HasValue("FrontDeskAssistant");
                 });
 
+            modelBuilder.Entity("TimeTwoFix.Core.Entities.IdentityManagement.GeneralManager", b =>
+                {
+                    b.HasBaseType("TimeTwoFix.Core.Entities.IdentityManagement.ApplicationUser");
+
+                    b.Property<string>("OfficeNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("YearsInManagement")
+                        .HasColumnType("int");
+
+                    b.HasDiscriminator().HasValue("GeneralManager");
+                });
+
             modelBuilder.Entity("TimeTwoFix.Core.Entities.IdentityManagement.Mechanic", b =>
                 {
                     b.HasBaseType("TimeTwoFix.Core.Entities.IdentityManagement.ApplicationUser");
+
+                    b.Property<bool>("AbleToShift")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Specialization")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("ToolBoxNumber")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasDiscriminator().HasValue("Mechanic");
                 });
@@ -845,6 +977,9 @@ namespace TimeTwoFix.Infrastructure.Migrations
                 {
                     b.HasBaseType("TimeTwoFix.Core.Entities.IdentityManagement.ApplicationUser");
 
+                    b.Property<bool>("AbleToShift")
+                        .HasColumnType("bit");
+
                     b.Property<string>("WarehouseLocation")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
@@ -852,6 +987,12 @@ namespace TimeTwoFix.Infrastructure.Migrations
                     b.Property<string>("WarehouseName")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
+
+                    b.ToTable("Employees", t =>
+                        {
+                            t.Property("AbleToShift")
+                                .HasColumnName("WareHouseManager_AbleToShift");
+                        });
 
                     b.HasDiscriminator().HasValue("WareHouseManager");
                 });

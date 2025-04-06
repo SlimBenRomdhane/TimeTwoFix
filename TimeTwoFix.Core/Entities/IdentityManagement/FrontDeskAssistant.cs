@@ -9,5 +9,7 @@ namespace TimeTwoFix.Core.Entities.IdentityManagement
 
         [MaxLength(50)]
         public string? SpokenLanguage { get; set; }
+
+        public bool BusinessKnowledge { get; set; }
     }
 }
