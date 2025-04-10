@@ -15,6 +15,10 @@ namespace TimeTwoFix.Infrastructure.Persistence
 {
     public class TimeTwoFixDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, int>
     {
+        public TimeTwoFixDbContext()
+        {
+        }
+
         public TimeTwoFixDbContext(DbContextOptions<TimeTwoFixDbContext> options) : base(options)
         {
         }

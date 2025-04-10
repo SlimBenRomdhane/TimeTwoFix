@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using TimeTwoFix.Core.Entities.BridgeManagement;
+using TimeTwoFix.Core.Interfaces.Repositories.Base;
+
+namespace TimeTwoFix.Core.Interfaces.Repositories
+{
+    public interface ILiftingBridgeRepository : IBaseRepository<LiftingBridge>
+    {
+        Task<IEnumerable<LiftingBridge>> GetLiftingBridgesByLoadCapacityAsync(int loadCapacity);
+        Task<IEnumerable<LiftingBridge>> GetLiftingBridgesByStatusAsync(string status);
+    }
+
+}

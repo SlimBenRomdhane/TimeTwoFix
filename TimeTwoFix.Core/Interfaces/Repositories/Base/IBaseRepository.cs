@@ -8,10 +8,10 @@
 
         Task DeleteAsyncGeneric(T entity);
 
-        Task<T> GetByIdAsyncGeneric(int id);
+        Task<T?> GetByIdAsyncGeneric(int id);
 
         Task<IEnumerable<T>> GetAllAsyncGeneric();
 
-        Task<bool> SaveChangesAsyncGeneric();
+        Task<int> SaveChangesAsyncGeneric();
     }
 }

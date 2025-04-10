@@ -30,19 +30,19 @@ namespace TimeTwoFix.Infrastructure.Persistence.Repositories.Base
             return await _dbSet.ToListAsync();
         }
 
-        public Task<T> GetByIdAsyncGeneric(int id)
+        public async Task<T?> GetByIdAsyncGeneric(int id)
         {
-            throw new NotImplementedException();
+            return await _dbSet.FindAsync(id);
         }
 
-        public Task<bool> SaveChangesAsyncGeneric()
+        public async Task<int> SaveChangesAsyncGeneric()
         {
-            throw new NotImplementedException();
+            return await _context.SaveChangesAsync();
         }
 
-        public Task UpdateAsyncGeneric(T entity)
+        public async Task UpdateAsyncGeneric(T entity)
         {
-            throw new NotImplementedException();
+            _dbSet.Update(entity);
         }
     }
 }
