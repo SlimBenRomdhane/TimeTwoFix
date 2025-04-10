@@ -1,0 +1,29 @@
+﻿using Microsoft.EntityFrameworkCore;
+using TimeTwoFix.Core.Entities.ServiceManagement;
+using TimeTwoFix.Core.Interfaces.Repositories;
+using TimeTwoFix.Infrastructure.Persistence.Repositories.Base;
+
+namespace TimeTwoFix.Infrastructure.Persistence.Repositories
+{
+    public class ServiceRepository : BaseRepository<Service>, IServiceRepository
+    {
+        private readonly TimeTwoFixDbContext _context;
+        public ServiceRepository(TimeTwoFixDbContext context) : base(context)
+        {
+            _context = context;
+        }
+        public async Task<IEnumerable<Service>> GetServicesByNameAsync(string name)
+        {
+            return await _context.Services
+                .Where(s => s.Name.Contains(name))
+                .ToListAsync();
+        }
+
+        public async Task<IEnumerable<Service>> GetServicesByCategoryIdAsync(int categoryId)
+        {
+            return await _context.Services
+                .Where(s => s.CategoryId == categoryId)
+                .ToListAsync();
+        }
+    }
+}
