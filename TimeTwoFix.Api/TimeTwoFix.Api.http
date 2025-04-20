@@ -1,6 +1,0 @@
-@TimeTwoFix.Api_HostAddress = http://localhost:5208
-
-GET {{TimeTwoFix.Api_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
