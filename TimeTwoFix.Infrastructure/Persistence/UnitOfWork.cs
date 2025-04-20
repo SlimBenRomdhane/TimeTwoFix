@@ -19,6 +19,7 @@ namespace TimeTwoFix.Infrastructure.Persistence
             InterventionSpareParts = new InterventionSparePartRepository(_context);
             SpareParts = new SparePartRepository(_context);
             Vehicles = new VehicleRepository(_context);
+            WorkOrders = new WorkOrderRepository(_context);
         }
         public IClientRepository Clients { get; private set; }
 
@@ -37,6 +38,8 @@ namespace TimeTwoFix.Infrastructure.Persistence
         public ISparePartRepository SpareParts { get; private set; }
 
         public IVehicleRepository Vehicles { get; private set; }
+
+        public IWorkOrderRepository WorkOrders { get; private set; }
 
         public void Dispose()
         {

@@ -6,7 +6,7 @@ namespace TimeTwoFix.Core.Interfaces
     {
         IClientRepository Clients { get; }
         IVehicleRepository Vehicles { get; }
-        //IWorkOrderRepository WorkOrders { get; }
+        IWorkOrderRepository WorkOrders { get; }
         //IInterventionRepository Interventions { get; }
         IInterventionSparePartRepository InterventionSpareParts { get; }
         ICategoryRepository Categories { get; }
