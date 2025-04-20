@@ -12,6 +12,5 @@
 
         Task<IEnumerable<T>> GetAllAsyncGeneric();
 
-        Task<int> SaveChangesAsyncGeneric();
     }
 }

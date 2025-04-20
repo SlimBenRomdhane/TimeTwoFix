@@ -7,13 +7,7 @@ namespace TimeTwoFix.Infrastructure.Persistence.Repositories
 {
     public class AppointmentRepository : BaseRepository<Appointment>, IAppointmentRepository
     {
-        private readonly TimeTwoFixDbContext _context;
-
-        public AppointmentRepository(TimeTwoFixDbContext context) : base(context)
-        {
-            _context = context;
-        }
-
+        public AppointmentRepository(TimeTwoFixDbContext context) : base(context) { }
         public async Task<IEnumerable<Appointment>> GetAppointmentsByDateAsync(DateOnly date)
         {
             var appointments = _context.Appointments

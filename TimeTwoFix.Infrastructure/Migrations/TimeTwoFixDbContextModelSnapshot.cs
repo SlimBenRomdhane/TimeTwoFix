@@ -616,6 +616,58 @@ namespace TimeTwoFix.Infrastructure.Migrations
                     b.ToTable("Skills");
                 });
 
+            modelBuilder.Entity("TimeTwoFix.Core.Entities.SparePartManagement.InterventionSparePart", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("DeliveryNote")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("InterventionId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Notes")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SparePartId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DeliveryNote")
+                        .IsUnique();
+
+                    b.HasIndex("InterventionId");
+
+                    b.HasIndex("SparePartId");
+
+                    b.ToTable("InterventionSpareParts");
+                });
+
             modelBuilder.Entity("TimeTwoFix.Core.Entities.SparePartManagement.SparePart", b =>
                 {
                     b.Property<int>("Id")
@@ -811,58 +863,6 @@ namespace TimeTwoFix.Infrastructure.Migrations
                     b.HasIndex("WorkOrderId");
 
                     b.ToTable("Interventions");
-                });
-
-            modelBuilder.Entity("TimeTwoFix.Core.Entities.WorkOrderManagement.InterventionSparePart", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime?>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("CreatedBy")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("DeliveryNote")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<int>("InterventionId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Notes")
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SparePartId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("UpdatedBy")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DeliveryNote")
-                        .IsUnique();
-
-                    b.HasIndex("InterventionId");
-
-                    b.HasIndex("SparePartId");
-
-                    b.ToTable("InterventionSpareParts");
                 });
 
             modelBuilder.Entity("TimeTwoFix.Core.Entities.WorkOrderManagement.WorkOrder", b =>
@@ -1096,6 +1096,25 @@ namespace TimeTwoFix.Infrastructure.Migrations
                     b.Navigation("Skill");
                 });
 
+            modelBuilder.Entity("TimeTwoFix.Core.Entities.SparePartManagement.InterventionSparePart", b =>
+                {
+                    b.HasOne("TimeTwoFix.Core.Entities.WorkOrderManagement.Intervention", "Intervention")
+                        .WithMany("InterventionSpareParts")
+                        .HasForeignKey("InterventionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TimeTwoFix.Core.Entities.SparePartManagement.SparePart", "SparePart")
+                        .WithMany("InterventionSpareParts")
+                        .HasForeignKey("SparePartId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Intervention");
+
+                    b.Navigation("SparePart");
+                });
+
             modelBuilder.Entity("TimeTwoFix.Core.Entities.VehicleManagement.Vehicle", b =>
                 {
                     b.HasOne("TimeTwoFix.Core.Entities.ClientManagement.Client", "Client")
@@ -1140,25 +1159,6 @@ namespace TimeTwoFix.Infrastructure.Migrations
                     b.Navigation("Service");
 
                     b.Navigation("WorkOrder");
-                });
-
-            modelBuilder.Entity("TimeTwoFix.Core.Entities.WorkOrderManagement.InterventionSparePart", b =>
-                {
-                    b.HasOne("TimeTwoFix.Core.Entities.WorkOrderManagement.Intervention", "Intervention")
-                        .WithMany("InterventionSpareParts")
-                        .HasForeignKey("InterventionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("TimeTwoFix.Core.Entities.SparePartManagement.SparePart", "SparePart")
-                        .WithMany("InterventionSpareParts")
-                        .HasForeignKey("SparePartId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Intervention");
-
-                    b.Navigation("SparePart");
                 });
 
             modelBuilder.Entity("TimeTwoFix.Core.Entities.WorkOrderManagement.WorkOrder", b =>

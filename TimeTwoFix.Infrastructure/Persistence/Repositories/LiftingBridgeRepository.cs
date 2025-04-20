@@ -7,11 +7,7 @@ namespace TimeTwoFix.Infrastructure.Persistence.Repositories
 {
     public class LiftingBridgeRepository : BaseRepository<LiftingBridge>, ILiftingBridgeRepository
     {
-        private readonly TimeTwoFixDbContext _context;
-        public LiftingBridgeRepository(TimeTwoFixDbContext context) : base(context)
-        {
-            _context = context;
-        }
+        public LiftingBridgeRepository(TimeTwoFixDbContext context) : base(context) { }
         // Implement the methods from ILiftingBridgeRepository here
         public async Task<IEnumerable<LiftingBridge>> GetLiftingBridgesByLoadCapacityAsync(int loadCapacity)
         {

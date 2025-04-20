@@ -3,6 +3,7 @@ using TimeTwoFix.Core.Common;
 using TimeTwoFix.Core.Entities.BridgeManagement;
 using TimeTwoFix.Core.Entities.IdentityManagement;
 using TimeTwoFix.Core.Entities.ServiceManagement;
+using TimeTwoFix.Core.Entities.SparePartManagement;
 
 namespace TimeTwoFix.Core.Entities.WorkOrderManagement
 {

@@ -7,11 +7,7 @@ namespace TimeTwoFix.Infrastructure.Persistence.Repositories
 {
     public class ClientRepository : BaseRepository<Client>, IClientRepository
     {
-        private readonly TimeTwoFixDbContext _context;
-        public ClientRepository(TimeTwoFixDbContext context) : base(context)
-        {
-            _context = context;
-        }
+        public ClientRepository(TimeTwoFixDbContext context) : base(context) { }
         public async Task<IEnumerable<Client>> GetClientsByNameAsync(string name)
         {
             return await _context.Clients

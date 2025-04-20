@@ -1,10 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35919.96 d17.13
+VisualStudioVersion = 17.13.35919.96
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTwoFix.Api", "TimeTwoFix.Api\TimeTwoFix.Api.csproj", "{D15908E8-77E0-4B86-AD25-131694257859}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTwoFix.Core", "TimeTwoFix.Core\TimeTwoFix.Core.csproj", "{97CC0FE0-FC3B-439F-819B-A0803550E3FE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTwoFix.Application", "TimeTwoFix.Application\TimeTwoFix.Application.csproj", "{71406516-DA00-4391-8ED1-6BABBC22CFEA}"
@@ -13,16 +11,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTwoFix.Infrastructure",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTwoFix.Test", "TimeTwoFix.Test\TimeTwoFix.Test.csproj", "{ECC0AB1A-B64D-4848-BE2A-E2276001A2FD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTwoFix.Web", "TimeTwoFix.Web\TimeTwoFix.Web.csproj", "{38669A6C-ED9F-4D34-BC83-0246A13D8958}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D15908E8-77E0-4B86-AD25-131694257859}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D15908E8-77E0-4B86-AD25-131694257859}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D15908E8-77E0-4B86-AD25-131694257859}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D15908E8-77E0-4B86-AD25-131694257859}.Release|Any CPU.Build.0 = Release|Any CPU
 		{97CC0FE0-FC3B-439F-819B-A0803550E3FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{97CC0FE0-FC3B-439F-819B-A0803550E3FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{97CC0FE0-FC3B-439F-819B-A0803550E3FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,6 +35,10 @@ Global
 		{ECC0AB1A-B64D-4848-BE2A-E2276001A2FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ECC0AB1A-B64D-4848-BE2A-E2276001A2FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ECC0AB1A-B64D-4848-BE2A-E2276001A2FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38669A6C-ED9F-4D34-BC83-0246A13D8958}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38669A6C-ED9F-4D34-BC83-0246A13D8958}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38669A6C-ED9F-4D34-BC83-0246A13D8958}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38669A6C-ED9F-4D34-BC83-0246A13D8958}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

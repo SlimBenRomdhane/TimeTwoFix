@@ -7,11 +7,7 @@ namespace TimeTwoFix.Infrastructure.Persistence.Repositories
 {
     public class SkillRepository : BaseRepository<Skill>, ISkillRepository
     {
-        private readonly TimeTwoFixDbContext _context;
-        public SkillRepository(TimeTwoFixDbContext context) : base(context)
-        {
-            _context = context;
-        }
+        public SkillRepository(TimeTwoFixDbContext context) : base(context) { }
         public async Task<IEnumerable<Skill>> GetSkillsByNameAsync(string name)
         {
             return await _context.Skills

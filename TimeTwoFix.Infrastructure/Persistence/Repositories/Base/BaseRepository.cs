@@ -5,8 +5,8 @@ namespace TimeTwoFix.Infrastructure.Persistence.Repositories.Base
 {
     public class BaseRepository<T> : IBaseRepository<T> where T : class
     {
-        private readonly TimeTwoFixDbContext _context;
-        private readonly DbSet<T> _dbSet;
+        protected readonly TimeTwoFixDbContext _context;
+        protected readonly DbSet<T> _dbSet;
 
         public BaseRepository(TimeTwoFixDbContext context)
         {
@@ -33,11 +33,6 @@ namespace TimeTwoFix.Infrastructure.Persistence.Repositories.Base
         public async Task<T?> GetByIdAsyncGeneric(int id)
         {
             return await _dbSet.FindAsync(id);
-        }
-
-        public async Task<int> SaveChangesAsyncGeneric()
-        {
-            return await _context.SaveChangesAsync();
         }
 
         public async Task UpdateAsyncGeneric(T entity)

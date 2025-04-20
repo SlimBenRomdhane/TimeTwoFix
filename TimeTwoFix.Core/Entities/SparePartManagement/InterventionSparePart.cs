@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using TimeTwoFix.Core.Common;
-using TimeTwoFix.Core.Entities.SparePartManagement;
+using TimeTwoFix.Core.Entities.WorkOrderManagement;
 
-namespace TimeTwoFix.Core.Entities.WorkOrderManagement
+namespace TimeTwoFix.Core.Entities.SparePartManagement
 {
     public class InterventionSparePart : BaseEntity
     {
@@ -12,6 +12,8 @@ namespace TimeTwoFix.Core.Entities.WorkOrderManagement
 
         [ForeignKey("SparePart")]
         public int SparePartId { get; set; }
+        [Required]
+        [Range(1, 10)]
 
         public int Quantity { get; set; }
 

@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using TimeTwoFix.Core.Common;
-using TimeTwoFix.Core.Entities.WorkOrderManagement;
 
 namespace TimeTwoFix.Core.Entities.SparePartManagement
 {

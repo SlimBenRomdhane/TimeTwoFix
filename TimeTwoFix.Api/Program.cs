@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using TimeTwoFix.Core.Interfaces;
 using TimeTwoFix.Infrastructure.Persistence;
 
 namespace TimeTwoFix.Api
@@ -14,6 +15,8 @@ namespace TimeTwoFix.Api
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
             });
+            //inject UnitOfWork
+            builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             // Add services to the container.
 
