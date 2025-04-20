@@ -1,9 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using TimeTwoFix.Core.Common;
 using TimeTwoFix.Core.Entities.BridgeManagement;
-using TimeTwoFix.Core.Entities.IdentityManagement;
 using TimeTwoFix.Core.Entities.ServiceManagement;
 using TimeTwoFix.Core.Entities.SparePartManagement;
+using TimeTwoFix.Core.Entities.UserManagement;
 
 namespace TimeTwoFix.Core.Entities.WorkOrderManagement
 {
@@ -25,7 +26,11 @@ namespace TimeTwoFix.Core.Entities.WorkOrderManagement
         public DateTime EndDate { get; set; }
         public int ActualTimeSpent { get; set; }
         public decimal InterventionPrice { get; set; }
+
+        [Required]
+        [MaxLength(50)]
         public string Status { get; set; }
+
         public Mechanic Mechanic { get; set; }
         public WorkOrder WorkOrder { get; set; }
         public Service Service { get; set; }

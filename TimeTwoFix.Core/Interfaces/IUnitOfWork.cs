@@ -1,4 +1,11 @@
-﻿using TimeTwoFix.Core.Interfaces.Repositories;
+﻿using TimeTwoFix.Core.Interfaces.Repositories.AppointmentManagement;
+using TimeTwoFix.Core.Interfaces.Repositories.BridgeManagement;
+using TimeTwoFix.Core.Interfaces.Repositories.ClientManagement;
+using TimeTwoFix.Core.Interfaces.Repositories.ServiceManagement;
+using TimeTwoFix.Core.Interfaces.Repositories.SkillsManagement;
+using TimeTwoFix.Core.Interfaces.Repositories.SparePartManagement;
+using TimeTwoFix.Core.Interfaces.Repositories.VehicleManagement;
+using TimeTwoFix.Core.Interfaces.Repositories.WorkOrderManagement;
 
 namespace TimeTwoFix.Core.Interfaces
 {
@@ -7,10 +14,8 @@ namespace TimeTwoFix.Core.Interfaces
         IClientRepository Clients { get; }
         IVehicleRepository Vehicles { get; }
         IWorkOrderRepository WorkOrders { get; }
-
         IInterventionRepository Interventions { get; }
         IInterventionSparePartRepository InterventionSpareParts { get; }
-
         ICategoryRepository Categories { get; }
         IServiceRepository Services { get; }
         ILiftingBridgeRepository LiftingBridges { get; }

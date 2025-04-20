@@ -4,10 +4,10 @@ using Microsoft.EntityFrameworkCore;
 using TimeTwoFix.Core.Entities.AppointmentManagement;
 using TimeTwoFix.Core.Entities.BridgeManagement;
 using TimeTwoFix.Core.Entities.ClientManagement;
-using TimeTwoFix.Core.Entities.IdentityManagement;
 using TimeTwoFix.Core.Entities.ServiceManagement;
-using TimeTwoFix.Core.Entities.SkillsManagement;
+using TimeTwoFix.Core.Entities.SkillManagement;
 using TimeTwoFix.Core.Entities.SparePartManagement;
+using TimeTwoFix.Core.Entities.UserManagement;
 using TimeTwoFix.Core.Entities.VehicleManagement;
 using TimeTwoFix.Core.Entities.WorkOrderManagement;
 

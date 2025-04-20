@@ -1,6 +1,20 @@
 ﻿using TimeTwoFix.Core.Interfaces;
-using TimeTwoFix.Core.Interfaces.Repositories;
-using TimeTwoFix.Infrastructure.Persistence.Repositories;
+using TimeTwoFix.Core.Interfaces.Repositories.AppointmentManagement;
+using TimeTwoFix.Core.Interfaces.Repositories.BridgeManagement;
+using TimeTwoFix.Core.Interfaces.Repositories.ClientManagement;
+using TimeTwoFix.Core.Interfaces.Repositories.ServiceManagement;
+using TimeTwoFix.Core.Interfaces.Repositories.SkillsManagement;
+using TimeTwoFix.Core.Interfaces.Repositories.SparePartManagement;
+using TimeTwoFix.Core.Interfaces.Repositories.VehicleManagement;
+using TimeTwoFix.Core.Interfaces.Repositories.WorkOrderManagement;
+using TimeTwoFix.Infrastructure.Persistence.Repositories.AppointmentManagement;
+using TimeTwoFix.Infrastructure.Persistence.Repositories.BridgeManagement;
+using TimeTwoFix.Infrastructure.Persistence.Repositories.ClientManagement;
+using TimeTwoFix.Infrastructure.Persistence.Repositories.ServiceManagement;
+using TimeTwoFix.Infrastructure.Persistence.Repositories.SkillManagement;
+using TimeTwoFix.Infrastructure.Persistence.Repositories.SparePartManagement;
+using TimeTwoFix.Infrastructure.Persistence.Repositories.VehicleManagement;
+using TimeTwoFix.Infrastructure.Persistence.Repositories.WorkOrderManagement;
 
 namespace TimeTwoFix.Infrastructure.Persistence
 {
