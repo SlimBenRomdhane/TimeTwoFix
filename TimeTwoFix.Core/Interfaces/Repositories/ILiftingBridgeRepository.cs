@@ -6,7 +6,7 @@ namespace TimeTwoFix.Core.Interfaces.Repositories
     public interface ILiftingBridgeRepository : IBaseRepository<LiftingBridge>
     {
         Task<IEnumerable<LiftingBridge>> GetLiftingBridgesByLoadCapacityAsync(int loadCapacity);
+
         Task<IEnumerable<LiftingBridge>> GetLiftingBridgesByStatusAsync(string status);
     }
-
 }

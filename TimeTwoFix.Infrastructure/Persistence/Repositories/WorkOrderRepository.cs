@@ -10,6 +10,7 @@ namespace TimeTwoFix.Infrastructure.Persistence.Repositories
         public WorkOrderRepository(TimeTwoFixDbContext context) : base(context)
         {
         }
+
         public async Task<IEnumerable<WorkOrder>> GetWorkOrdersByStatusAsync(string status)
         {
             var workOrders = await _context.WorkOrders
@@ -17,6 +18,7 @@ namespace TimeTwoFix.Infrastructure.Persistence.Repositories
                 .ToListAsync();
             return workOrders;
         }
+
         public async Task<IEnumerable<WorkOrder>> GetWorkOrdersByVehicleIdAsync(int vehicleId)
         {
             var workOrders = await _context.WorkOrders
@@ -24,6 +26,7 @@ namespace TimeTwoFix.Infrastructure.Persistence.Repositories
                 .ToListAsync();
             return workOrders;
         }
+
         public async Task<IEnumerable<WorkOrder>> GetWorkOrdersByDateRangeAsync(DateTime startDate, DateTime endDate)
         {
             var workOrders = await _context.WorkOrders
@@ -32,5 +35,4 @@ namespace TimeTwoFix.Infrastructure.Persistence.Repositories
             return workOrders;
         }
     }
-
 }

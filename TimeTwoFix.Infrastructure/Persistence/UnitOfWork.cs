@@ -7,6 +7,7 @@ namespace TimeTwoFix.Infrastructure.Persistence
     public class UnitOfWork : IUnitOfWork
     {
         private readonly TimeTwoFixDbContext _context;
+
         public UnitOfWork(TimeTwoFixDbContext context)
         {
             _context = context;
@@ -20,7 +21,9 @@ namespace TimeTwoFix.Infrastructure.Persistence
             SpareParts = new SparePartRepository(_context);
             Vehicles = new VehicleRepository(_context);
             WorkOrders = new WorkOrderRepository(_context);
+            Interventions = new InterventionRepository(_context);
         }
+
         public IClientRepository Clients { get; private set; }
 
         public ICategoryRepository Categories { get; private set; }
@@ -40,6 +43,8 @@ namespace TimeTwoFix.Infrastructure.Persistence
         public IVehicleRepository Vehicles { get; private set; }
 
         public IWorkOrderRepository WorkOrders { get; private set; }
+
+        public IInterventionRepository Interventions { get; private set; }
 
         public void Dispose()
         {

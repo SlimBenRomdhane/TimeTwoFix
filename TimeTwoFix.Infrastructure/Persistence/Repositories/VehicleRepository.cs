@@ -1,9 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TimeTwoFix.Core.Entities.VehicleManagement;
 using TimeTwoFix.Core.Interfaces.Repositories;
 using TimeTwoFix.Infrastructure.Persistence.Repositories.Base;
@@ -15,6 +10,7 @@ namespace TimeTwoFix.Infrastructure.Persistence.Repositories
         public VehicleRepository(TimeTwoFixDbContext context) : base(context)
         {
         }
+
         public async Task<IEnumerable<Vehicle>> GetVehiclesByModelAsync(string model)
         {
             var vehicles = await _context.Vehicles
@@ -22,6 +18,7 @@ namespace TimeTwoFix.Infrastructure.Persistence.Repositories
                 .ToListAsync();
             return vehicles;
         }
+
         public async Task<Vehicle?> GetVehicleByVinAsync(string vin)
         {
             var vehicle = await _context.Vehicles
@@ -75,5 +72,4 @@ namespace TimeTwoFix.Infrastructure.Persistence.Repositories
             return vehicles;
         }
     }
-
 }

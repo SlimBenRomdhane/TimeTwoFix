@@ -7,7 +7,7 @@ namespace TimeTwoFix.Core.Entities.SkillsManagement
     {
         [Required]
         [MaxLength(50)]
-        public required string Name { get; set; }
+        public string Name { get; set; }
 
         public string? Description { get; set; }
     }

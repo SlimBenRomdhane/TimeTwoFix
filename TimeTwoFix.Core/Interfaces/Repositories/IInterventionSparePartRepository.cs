@@ -6,7 +6,7 @@ namespace TimeTwoFix.Core.Interfaces.Repositories
     public interface IInterventionSparePartRepository : IBaseRepository<InterventionSparePart>
     {
         Task<IEnumerable<InterventionSparePart>> GetInterventionSparePartsByInterventionIdAsync(int interventionId);
-        Task<IEnumerable<InterventionSparePart>> GetInterventionSparePartsBySparePartIdAsync(int sparePartId);
 
+        Task<IEnumerable<InterventionSparePart>> GetInterventionSparePartsBySparePartIdAsync(int sparePartId);
     }
 }

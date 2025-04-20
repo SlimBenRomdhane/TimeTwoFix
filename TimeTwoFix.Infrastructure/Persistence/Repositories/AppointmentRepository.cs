@@ -7,7 +7,10 @@ namespace TimeTwoFix.Infrastructure.Persistence.Repositories
 {
     public class AppointmentRepository : BaseRepository<Appointment>, IAppointmentRepository
     {
-        public AppointmentRepository(TimeTwoFixDbContext context) : base(context) { }
+        public AppointmentRepository(TimeTwoFixDbContext context) : base(context)
+        {
+        }
+
         public async Task<IEnumerable<Appointment>> GetAppointmentsByDateAsync(DateOnly date)
         {
             var appointments = _context.Appointments
@@ -40,5 +43,4 @@ namespace TimeTwoFix.Infrastructure.Persistence.Repositories
             return await appointments;
         }
     }
-
 }

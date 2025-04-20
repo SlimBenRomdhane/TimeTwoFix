@@ -7,15 +7,20 @@ namespace TimeTwoFix.Core.Interfaces
         IClientRepository Clients { get; }
         IVehicleRepository Vehicles { get; }
         IWorkOrderRepository WorkOrders { get; }
-        //IInterventionRepository Interventions { get; }
+
+        IInterventionRepository Interventions { get; }
         IInterventionSparePartRepository InterventionSpareParts { get; }
+
         ICategoryRepository Categories { get; }
         IServiceRepository Services { get; }
         ILiftingBridgeRepository LiftingBridges { get; }
         ISkillRepository Skills { get; }
+
         //IMechanicSkillRepository MechanicSkills { get; }
         IAppointmentRepository Appointments { get; }
+
         ISparePartRepository SpareParts { get; }
+
         //IFrontDeskAssistantRepository FrontDeskAssistants { get; }
         //IMechanicRepository Mechanics { get; }
         //IWareHouseManagerRepository WareHouseManagers { get; }
@@ -23,5 +28,4 @@ namespace TimeTwoFix.Core.Interfaces
         //IGeneralManagerRepository GeneralManagers { get; }
         Task<int> SaveChangesAsync();
     }
-
 }

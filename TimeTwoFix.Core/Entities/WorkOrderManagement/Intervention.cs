@@ -25,6 +25,7 @@ namespace TimeTwoFix.Core.Entities.WorkOrderManagement
         public DateTime EndDate { get; set; }
         public int ActualTimeSpent { get; set; }
         public decimal InterventionPrice { get; set; }
+        public string Status { get; set; }
         public Mechanic Mechanic { get; set; }
         public WorkOrder WorkOrder { get; set; }
         public Service Service { get; set; }

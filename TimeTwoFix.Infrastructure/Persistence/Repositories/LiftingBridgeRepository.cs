@@ -7,7 +7,10 @@ namespace TimeTwoFix.Infrastructure.Persistence.Repositories
 {
     public class LiftingBridgeRepository : BaseRepository<LiftingBridge>, ILiftingBridgeRepository
     {
-        public LiftingBridgeRepository(TimeTwoFixDbContext context) : base(context) { }
+        public LiftingBridgeRepository(TimeTwoFixDbContext context) : base(context)
+        {
+        }
+
         // Implement the methods from ILiftingBridgeRepository here
         public async Task<IEnumerable<LiftingBridge>> GetLiftingBridgesByLoadCapacityAsync(int loadCapacity)
         {
@@ -15,6 +18,7 @@ namespace TimeTwoFix.Infrastructure.Persistence.Repositories
                 .Where(l => l.LoadCapacity == loadCapacity)
                 .ToListAsync();
         }
+
         public async Task<IEnumerable<LiftingBridge>> GetLiftingBridgesByStatusAsync(string status)
         {
             return await _context.LiftingBridges
@@ -22,5 +26,4 @@ namespace TimeTwoFix.Infrastructure.Persistence.Repositories
                 .ToListAsync();
         }
     }
-
 }

@@ -12,9 +12,9 @@ namespace TimeTwoFix.Core.Entities.SparePartManagement
 
         [ForeignKey("SparePart")]
         public int SparePartId { get; set; }
+
         [Required]
         [Range(1, 10)]
-
         public int Quantity { get; set; }
 
         //Bon de sortie

@@ -18,6 +18,7 @@ namespace TimeTwoFix.Infrastructure.Persistence.Repositories
                 .ToListAsync();
             return interventionSpareParts;
         }
+
         public async Task<IEnumerable<InterventionSparePart>> GetInterventionSparePartsBySparePartIdAsync(int sparePartId)
         {
             var interventionSpareParts = await _context.InterventionSpareParts
@@ -26,5 +27,4 @@ namespace TimeTwoFix.Infrastructure.Persistence.Repositories
             return interventionSpareParts;
         }
     }
-
 }

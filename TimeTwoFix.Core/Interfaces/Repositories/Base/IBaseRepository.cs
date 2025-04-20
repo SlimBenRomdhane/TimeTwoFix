@@ -11,6 +11,5 @@
         Task<T?> GetByIdAsyncGeneric(int id);
 
         Task<IEnumerable<T>> GetAllAsyncGeneric();
-
     }
 }

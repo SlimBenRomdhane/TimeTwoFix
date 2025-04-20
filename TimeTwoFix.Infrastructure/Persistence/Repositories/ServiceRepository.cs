@@ -7,7 +7,10 @@ namespace TimeTwoFix.Infrastructure.Persistence.Repositories
 {
     public class ServiceRepository : BaseRepository<Service>, IServiceRepository
     {
-        public ServiceRepository(TimeTwoFixDbContext context) : base(context) { }
+        public ServiceRepository(TimeTwoFixDbContext context) : base(context)
+        {
+        }
+
         public async Task<IEnumerable<Service>> GetServicesByNameAsync(string name)
         {
             return await _context.Services
