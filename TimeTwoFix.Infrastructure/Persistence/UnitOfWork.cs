@@ -1,4 +1,6 @@
-﻿using TimeTwoFix.Core.Interfaces;
+﻿using Microsoft.AspNetCore.Identity;
+using TimeTwoFix.Core.Entities.UserManagement;
+using TimeTwoFix.Core.Interfaces;
 using TimeTwoFix.Core.Interfaces.Repositories.AppointmentManagement;
 using TimeTwoFix.Core.Interfaces.Repositories.BridgeManagement;
 using TimeTwoFix.Core.Interfaces.Repositories.ClientManagement;
@@ -22,7 +24,10 @@ namespace TimeTwoFix.Infrastructure.Persistence
     {
         private readonly TimeTwoFixDbContext _context;
 
-        public UnitOfWork(TimeTwoFixDbContext context)
+        public UnitOfWork(TimeTwoFixDbContext context,
+            UserManager<ApplicationUser> userManager,
+            RoleManager<ApplicationRole> roleManager,
+            SignInManager<ApplicationUser> signInManager)
         {
             _context = context;
             Clients = new ClientRepository(_context);
@@ -36,6 +41,9 @@ namespace TimeTwoFix.Infrastructure.Persistence
             Vehicles = new VehicleRepository(_context);
             WorkOrders = new WorkOrderRepository(_context);
             Interventions = new InterventionRepository(_context);
+            UserManager = userManager;
+            RoleManager = roleManager;
+            SignInManager = signInManager;
         }
 
         public IClientRepository Clients { get; private set; }
@@ -59,6 +67,12 @@ namespace TimeTwoFix.Infrastructure.Persistence
         public IWorkOrderRepository WorkOrders { get; private set; }
 
         public IInterventionRepository Interventions { get; private set; }
+
+        public UserManager<ApplicationUser> UserManager { get; private set; }
+
+        public RoleManager<ApplicationRole> RoleManager { get; private set; }
+
+        public SignInManager<ApplicationUser> SignInManager { get; private set; }
 
         public void Dispose()
         {

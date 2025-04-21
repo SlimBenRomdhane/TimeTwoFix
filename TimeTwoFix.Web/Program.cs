@@ -1,5 +1,8 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using TimeTwoFix.Core.Entities.UserManagement;
 using TimeTwoFix.Core.Interfaces;
+using TimeTwoFix.Infrastructure.Extension;
 using TimeTwoFix.Infrastructure.Persistence;
 
 namespace TimeTwoFix.Web
@@ -9,13 +12,10 @@ namespace TimeTwoFix.Web
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-            //Configure DbContext
-            builder.Services.AddDbContext<TimeTwoFixDbContext>(options =>
-            {
-                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-            });
-            //inject UnitOfWork
-            builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            //Add InfrastructureRegistration
+            builder.Services.AddInfrastructure(builder.Configuration);
+
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();

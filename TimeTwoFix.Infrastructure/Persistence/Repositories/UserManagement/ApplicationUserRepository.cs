@@ -10,7 +10,7 @@ namespace TimeTwoFix.Infrastructure.Persistence.Repositories.UserManagement
         public ApplicationUserRepository(TimeTwoFixDbContext context) : base(context)
         {
         }
-        public async Task<ApplicationUser?> GetUserByEmailAsync(string email)
+        public async Task<ApplicationUser> GetUserByEmailAsync(string email)
         {
             var applicationUser = await _context.Users
                 .FirstOrDefaultAsync(u => u.Email == email);

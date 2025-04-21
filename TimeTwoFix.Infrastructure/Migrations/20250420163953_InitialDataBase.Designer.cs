@@ -12,7 +12,7 @@ using TimeTwoFix.Infrastructure.Persistence;
 namespace TimeTwoFix.Infrastructure.Migrations
 {
     [DbContext(typeof(TimeTwoFixDbContext))]
-    [Migration("20250420131605_InitialDataBase")]
+    [Migration("20250420163953_InitialDataBase")]
     partial class InitialDataBase
     {
         /// <inheritdoc />
@@ -321,125 +321,6 @@ namespace TimeTwoFix.Infrastructure.Migrations
                     b.ToTable("Clients");
                 });
 
-            modelBuilder.Entity("TimeTwoFix.Core.Entities.IdentityManagement.ApplicationRole", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("NormalizedName")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("NormalizedName")
-                        .IsUnique()
-                        .HasDatabaseName("RoleNameIndex")
-                        .HasFilter("[NormalizedName] IS NOT NULL");
-
-                    b.ToTable("Roles", (string)null);
-                });
-
-            modelBuilder.Entity("TimeTwoFix.Core.Entities.IdentityManagement.ApplicationUser", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("City")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("Email")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<DateTime>("HireDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<decimal>("HourlyWage")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("ImageUrl")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LastEmployer")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("NormalizedUserName")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("PasswordHash")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("PostalCode")
-                        .HasColumnType("int");
-
-                    b.Property<string>("RoleTypeDiscriminator")
-                        .IsRequired()
-                        .HasMaxLength(21)
-                        .HasColumnType("nvarchar(21)");
-
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("UserName")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<int>("yearsOfExperience")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("NormalizedUserName")
-                        .IsUnique()
-                        .HasDatabaseName("UserNameIndex")
-                        .HasFilter("[NormalizedUserName] IS NOT NULL");
-
-                    b.ToTable("Employees", (string)null);
-
-                    b.HasDiscriminator<string>("RoleTypeDiscriminator").HasValue("ApplicationUser");
-
-                    b.UseTphMappingStrategy();
-                });
-
             modelBuilder.Entity("TimeTwoFix.Core.Entities.ServiceManagement.Category", b =>
                 {
                     b.Property<int>("Id")
@@ -533,7 +414,7 @@ namespace TimeTwoFix.Infrastructure.Migrations
                     b.ToTable("Services");
                 });
 
-            modelBuilder.Entity("TimeTwoFix.Core.Entities.SkillsManagement.MechanicSkill", b =>
+            modelBuilder.Entity("TimeTwoFix.Core.Entities.SkillManagement.MechanicSkill", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -580,7 +461,7 @@ namespace TimeTwoFix.Infrastructure.Migrations
                     b.ToTable("MechanicSkills");
                 });
 
-            modelBuilder.Entity("TimeTwoFix.Core.Entities.SkillsManagement.Skill", b =>
+            modelBuilder.Entity("TimeTwoFix.Core.Entities.SkillManagement.Skill", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -728,6 +609,125 @@ namespace TimeTwoFix.Infrastructure.Migrations
                         .IsUnique();
 
                     b.ToTable("SpareParts");
+                });
+
+            modelBuilder.Entity("TimeTwoFix.Core.Entities.UserManagement.ApplicationRole", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedName")
+                        .IsUnique()
+                        .HasDatabaseName("RoleNameIndex")
+                        .HasFilter("[NormalizedName] IS NOT NULL");
+
+                    b.ToTable("Roles", (string)null);
+                });
+
+            modelBuilder.Entity("TimeTwoFix.Core.Entities.UserManagement.ApplicationUser", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime>("HireDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("HourlyWage")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastEmployer")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PostalCode")
+                        .HasColumnType("int");
+
+                    b.Property<string>("RoleTypeDiscriminator")
+                        .IsRequired()
+                        .HasMaxLength(21)
+                        .HasColumnType("nvarchar(21)");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("UserName")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("yearsOfExperience")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasDatabaseName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.ToTable("Employees", (string)null);
+
+                    b.HasDiscriminator<string>("RoleTypeDiscriminator").HasValue("ApplicationUser");
+
+                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("TimeTwoFix.Core.Entities.VehicleManagement.Vehicle", b =>
@@ -926,9 +926,9 @@ namespace TimeTwoFix.Infrastructure.Migrations
                     b.ToTable("WorkOrders");
                 });
 
-            modelBuilder.Entity("TimeTwoFix.Core.Entities.IdentityManagement.FrontDeskAssistant", b =>
+            modelBuilder.Entity("TimeTwoFix.Core.Entities.UserManagement.FrontDeskAssistant", b =>
                 {
-                    b.HasBaseType("TimeTwoFix.Core.Entities.IdentityManagement.ApplicationUser");
+                    b.HasBaseType("TimeTwoFix.Core.Entities.UserManagement.ApplicationUser");
 
                     b.Property<bool>("BusinessKnowledge")
                         .HasColumnType("bit");
@@ -946,9 +946,9 @@ namespace TimeTwoFix.Infrastructure.Migrations
                     b.HasDiscriminator().HasValue("FrontDeskAssistant");
                 });
 
-            modelBuilder.Entity("TimeTwoFix.Core.Entities.IdentityManagement.GeneralManager", b =>
+            modelBuilder.Entity("TimeTwoFix.Core.Entities.UserManagement.GeneralManager", b =>
                 {
-                    b.HasBaseType("TimeTwoFix.Core.Entities.IdentityManagement.ApplicationUser");
+                    b.HasBaseType("TimeTwoFix.Core.Entities.UserManagement.ApplicationUser");
 
                     b.Property<string>("OfficeNumber")
                         .HasColumnType("nvarchar(max)");
@@ -959,9 +959,9 @@ namespace TimeTwoFix.Infrastructure.Migrations
                     b.HasDiscriminator().HasValue("GeneralManager");
                 });
 
-            modelBuilder.Entity("TimeTwoFix.Core.Entities.IdentityManagement.Mechanic", b =>
+            modelBuilder.Entity("TimeTwoFix.Core.Entities.UserManagement.Mechanic", b =>
                 {
-                    b.HasBaseType("TimeTwoFix.Core.Entities.IdentityManagement.ApplicationUser");
+                    b.HasBaseType("TimeTwoFix.Core.Entities.UserManagement.ApplicationUser");
 
                     b.Property<bool>("AbleToShift")
                         .HasColumnType("bit");
@@ -978,9 +978,9 @@ namespace TimeTwoFix.Infrastructure.Migrations
                     b.HasDiscriminator().HasValue("Mechanic");
                 });
 
-            modelBuilder.Entity("TimeTwoFix.Core.Entities.IdentityManagement.WareHouseManager", b =>
+            modelBuilder.Entity("TimeTwoFix.Core.Entities.UserManagement.WareHouseManager", b =>
                 {
-                    b.HasBaseType("TimeTwoFix.Core.Entities.IdentityManagement.ApplicationUser");
+                    b.HasBaseType("TimeTwoFix.Core.Entities.UserManagement.ApplicationUser");
 
                     b.Property<bool>("AbleToShift")
                         .HasColumnType("bit");
@@ -1002,9 +1002,9 @@ namespace TimeTwoFix.Infrastructure.Migrations
                     b.HasDiscriminator().HasValue("WareHouseManager");
                 });
 
-            modelBuilder.Entity("TimeTwoFix.Core.Entities.IdentityManagement.WorkshopManager", b =>
+            modelBuilder.Entity("TimeTwoFix.Core.Entities.UserManagement.WorkshopManager", b =>
                 {
-                    b.HasBaseType("TimeTwoFix.Core.Entities.IdentityManagement.ApplicationUser");
+                    b.HasBaseType("TimeTwoFix.Core.Entities.UserManagement.ApplicationUser");
 
                     b.Property<int>("TeamSize")
                         .HasColumnType("int");
@@ -1014,7 +1014,7 @@ namespace TimeTwoFix.Infrastructure.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
-                    b.HasOne("TimeTwoFix.Core.Entities.IdentityManagement.ApplicationRole", null)
+                    b.HasOne("TimeTwoFix.Core.Entities.UserManagement.ApplicationRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1023,7 +1023,7 @@ namespace TimeTwoFix.Infrastructure.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<int>", b =>
                 {
-                    b.HasOne("TimeTwoFix.Core.Entities.IdentityManagement.ApplicationUser", null)
+                    b.HasOne("TimeTwoFix.Core.Entities.UserManagement.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1032,7 +1032,7 @@ namespace TimeTwoFix.Infrastructure.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<int>", b =>
                 {
-                    b.HasOne("TimeTwoFix.Core.Entities.IdentityManagement.ApplicationUser", null)
+                    b.HasOne("TimeTwoFix.Core.Entities.UserManagement.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1041,13 +1041,13 @@ namespace TimeTwoFix.Infrastructure.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<int>", b =>
                 {
-                    b.HasOne("TimeTwoFix.Core.Entities.IdentityManagement.ApplicationRole", null)
+                    b.HasOne("TimeTwoFix.Core.Entities.UserManagement.ApplicationRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("TimeTwoFix.Core.Entities.IdentityManagement.ApplicationUser", null)
+                    b.HasOne("TimeTwoFix.Core.Entities.UserManagement.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1056,7 +1056,7 @@ namespace TimeTwoFix.Infrastructure.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<int>", b =>
                 {
-                    b.HasOne("TimeTwoFix.Core.Entities.IdentityManagement.ApplicationUser", null)
+                    b.HasOne("TimeTwoFix.Core.Entities.UserManagement.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1085,15 +1085,15 @@ namespace TimeTwoFix.Infrastructure.Migrations
                     b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("TimeTwoFix.Core.Entities.SkillsManagement.MechanicSkill", b =>
+            modelBuilder.Entity("TimeTwoFix.Core.Entities.SkillManagement.MechanicSkill", b =>
                 {
-                    b.HasOne("TimeTwoFix.Core.Entities.IdentityManagement.Mechanic", "Mechanic")
+                    b.HasOne("TimeTwoFix.Core.Entities.UserManagement.Mechanic", "Mechanic")
                         .WithMany()
                         .HasForeignKey("MechanicId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("TimeTwoFix.Core.Entities.SkillsManagement.Skill", "Skill")
+                    b.HasOne("TimeTwoFix.Core.Entities.SkillManagement.Skill", "Skill")
                         .WithMany()
                         .HasForeignKey("SkillId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1142,7 +1142,7 @@ namespace TimeTwoFix.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("TimeTwoFix.Core.Entities.IdentityManagement.Mechanic", "Mechanic")
+                    b.HasOne("TimeTwoFix.Core.Entities.UserManagement.Mechanic", "Mechanic")
                         .WithMany("Interventions")
                         .HasForeignKey("MechanicId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1217,7 +1217,7 @@ namespace TimeTwoFix.Infrastructure.Migrations
                     b.Navigation("Interventions");
                 });
 
-            modelBuilder.Entity("TimeTwoFix.Core.Entities.IdentityManagement.Mechanic", b =>
+            modelBuilder.Entity("TimeTwoFix.Core.Entities.UserManagement.Mechanic", b =>
                 {
                     b.Navigation("Interventions");
                 });

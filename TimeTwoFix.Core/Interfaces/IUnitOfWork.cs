@@ -1,4 +1,6 @@
-﻿using TimeTwoFix.Core.Interfaces.Repositories.AppointmentManagement;
+﻿using Microsoft.AspNetCore.Identity;
+using TimeTwoFix.Core.Entities.UserManagement;
+using TimeTwoFix.Core.Interfaces.Repositories.AppointmentManagement;
 using TimeTwoFix.Core.Interfaces.Repositories.BridgeManagement;
 using TimeTwoFix.Core.Interfaces.Repositories.ClientManagement;
 using TimeTwoFix.Core.Interfaces.Repositories.ServiceManagement;
@@ -31,6 +33,11 @@ namespace TimeTwoFix.Core.Interfaces
         //IWareHouseManagerRepository WareHouseManagers { get; }
         //IWorkshopManagerRepository WorkshopManagers { get; }
         //IGeneralManagerRepository GeneralManagers { get; }
+
+        //Identity related repositories
+        UserManager<ApplicationUser> UserManager { get; }
+        RoleManager<ApplicationRole> RoleManager { get; }
+        SignInManager<ApplicationUser> SignInManager { get; }
         Task<int> SaveChangesAsync();
     }
 }
