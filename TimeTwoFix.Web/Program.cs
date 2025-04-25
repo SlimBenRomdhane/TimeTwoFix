@@ -1,10 +1,5 @@
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using TimeTwoFix.Core.Entities.UserManagement;
-using TimeTwoFix.Core.Interfaces;
 using TimeTwoFix.Infrastructure.Extension;
-using TimeTwoFix.Infrastructure.Persistence;
-
+using TimeTwoFix.Application.Extension;
 namespace TimeTwoFix.Web
 {
     public class Program
@@ -15,7 +10,8 @@ namespace TimeTwoFix.Web
 
             //Add InfrastructureRegistration
             builder.Services.AddInfrastructure(builder.Configuration);
-
+            //Add ApplicationRegistration
+            builder.Services.RegisterApplicationServices();
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();

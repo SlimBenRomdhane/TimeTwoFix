@@ -1,8 +1,7 @@
-﻿using Microsoft.AspNetCore.Identity;
-using TimeTwoFix.Core.Entities.UserManagement;
-using TimeTwoFix.Core.Interfaces.Repositories.AppointmentManagement;
+﻿using TimeTwoFix.Core.Interfaces.Repositories.AppointmentManagement;
 using TimeTwoFix.Core.Interfaces.Repositories.BridgeManagement;
 using TimeTwoFix.Core.Interfaces.Repositories.ClientManagement;
+using TimeTwoFix.Core.Interfaces.Repositories.IdentityManagement;
 using TimeTwoFix.Core.Interfaces.Repositories.ServiceManagement;
 using TimeTwoFix.Core.Interfaces.Repositories.SkillsManagement;
 using TimeTwoFix.Core.Interfaces.Repositories.SparePartManagement;
@@ -22,22 +21,18 @@ namespace TimeTwoFix.Core.Interfaces
         IServiceRepository Services { get; }
         ILiftingBridgeRepository LiftingBridges { get; }
         ISkillRepository Skills { get; }
-
-        //IMechanicSkillRepository MechanicSkills { get; }
+        IMechanicSkillRepository MechanicSkills { get; }
         IAppointmentRepository Appointments { get; }
-
         ISparePartRepository SpareParts { get; }
+        IApplicationUserRepository ApplicationUsers { get; }
 
+        //Till Now No Need For These Repositories Bacause ApplicationUserRepository Is Enough
         //IFrontDeskAssistantRepository FrontDeskAssistants { get; }
         //IMechanicRepository Mechanics { get; }
         //IWareHouseManagerRepository WareHouseManagers { get; }
         //IWorkshopManagerRepository WorkshopManagers { get; }
         //IGeneralManagerRepository GeneralManagers { get; }
 
-        //Identity related repositories
-        UserManager<ApplicationUser> UserManager { get; }
-        RoleManager<ApplicationRole> RoleManager { get; }
-        SignInManager<ApplicationUser> SignInManager { get; }
         Task<int> SaveChangesAsync();
     }
 }

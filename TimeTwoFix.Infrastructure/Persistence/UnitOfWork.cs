@@ -4,6 +4,7 @@ using TimeTwoFix.Core.Interfaces;
 using TimeTwoFix.Core.Interfaces.Repositories.AppointmentManagement;
 using TimeTwoFix.Core.Interfaces.Repositories.BridgeManagement;
 using TimeTwoFix.Core.Interfaces.Repositories.ClientManagement;
+using TimeTwoFix.Core.Interfaces.Repositories.IdentityManagement;
 using TimeTwoFix.Core.Interfaces.Repositories.ServiceManagement;
 using TimeTwoFix.Core.Interfaces.Repositories.SkillsManagement;
 using TimeTwoFix.Core.Interfaces.Repositories.SparePartManagement;
@@ -15,6 +16,7 @@ using TimeTwoFix.Infrastructure.Persistence.Repositories.ClientManagement;
 using TimeTwoFix.Infrastructure.Persistence.Repositories.ServiceManagement;
 using TimeTwoFix.Infrastructure.Persistence.Repositories.SkillManagement;
 using TimeTwoFix.Infrastructure.Persistence.Repositories.SparePartManagement;
+using TimeTwoFix.Infrastructure.Persistence.Repositories.UserManagement;
 using TimeTwoFix.Infrastructure.Persistence.Repositories.VehicleManagement;
 using TimeTwoFix.Infrastructure.Persistence.Repositories.WorkOrderManagement;
 
@@ -41,38 +43,23 @@ namespace TimeTwoFix.Infrastructure.Persistence
             Vehicles = new VehicleRepository(_context);
             WorkOrders = new WorkOrderRepository(_context);
             Interventions = new InterventionRepository(_context);
-            UserManager = userManager;
-            RoleManager = roleManager;
-            SignInManager = signInManager;
+            MechanicSkills = new MechanicSkillRepository(_context);
+            ApplicationUsers = new ApplicationUserRepository(userManager, roleManager, signInManager);
         }
 
         public IClientRepository Clients { get; private set; }
-
         public ICategoryRepository Categories { get; private set; }
-
         public IServiceRepository Services { get; private set; }
-
         public ILiftingBridgeRepository LiftingBridges { get; private set; }
-
         public ISkillRepository Skills { get; private set; }
-
         public IAppointmentRepository Appointments { get; private set; }
-
         public IInterventionSparePartRepository InterventionSpareParts { get; private set; }
-
         public ISparePartRepository SpareParts { get; private set; }
-
         public IVehicleRepository Vehicles { get; private set; }
-
         public IWorkOrderRepository WorkOrders { get; private set; }
-
         public IInterventionRepository Interventions { get; private set; }
-
-        public UserManager<ApplicationUser> UserManager { get; private set; }
-
-        public RoleManager<ApplicationRole> RoleManager { get; private set; }
-
-        public SignInManager<ApplicationUser> SignInManager { get; private set; }
+        public IApplicationUserRepository ApplicationUsers { get; private set; }
+        public IMechanicSkillRepository MechanicSkills { get; private set; }
 
         public void Dispose()
         {

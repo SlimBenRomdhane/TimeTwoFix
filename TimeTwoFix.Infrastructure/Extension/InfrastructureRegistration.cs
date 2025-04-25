@@ -19,11 +19,12 @@ namespace TimeTwoFix.Infrastructure.Extension
             //Identity Registration
             services.AddIdentity<ApplicationUser, ApplicationRole>()
                 .AddEntityFrameworkStores<TimeTwoFixDbContext>()
+                .AddSignInManager()
                 .AddDefaultTokenProviders();
             //This line is optional because I stumbled into a problem regestering SignIn Manager
             services.AddHttpContextAccessor();
 
-
+            //Unit of Work Registration
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             // Add other infrastructure services here
             return services;

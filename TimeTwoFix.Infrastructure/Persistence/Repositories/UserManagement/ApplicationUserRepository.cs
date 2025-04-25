@@ -1,28 +1,82 @@
-﻿using TimeTwoFix.Core.Entities.UserManagement;
-using TimeTwoFix.Infrastructure.Persistence.Repositories.Base;
+﻿using Microsoft.AspNetCore.Identity;
+using TimeTwoFix.Core.Entities.UserManagement;
 using TimeTwoFix.Core.Interfaces.Repositories.IdentityManagement;
-using Microsoft.EntityFrameworkCore;
 
 namespace TimeTwoFix.Infrastructure.Persistence.Repositories.UserManagement
 {
-    public class ApplicationUserRepository : BaseRepository<ApplicationUser>, IApplicationUserRepository
+    public class ApplicationUserRepository : IApplicationUserRepository
     {
-        public ApplicationUserRepository(TimeTwoFixDbContext context) : base(context)
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly RoleManager<ApplicationRole> _roleManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
+
+        public ApplicationUserRepository(UserManager<ApplicationUser> userManager,
+            RoleManager<ApplicationRole> roleManager,
+            SignInManager<ApplicationUser> signInManager)
         {
+            _userManager = userManager;
+            _roleManager = roleManager;
+            _signInManager = signInManager;
         }
-        public async Task<ApplicationUser> GetUserByEmailAsync(string email)
+
+        public async Task<IdentityResult> CreateUserAsync(ApplicationUser user, string password)
         {
-            var applicationUser = await _context.Users
-                .FirstOrDefaultAsync(u => u.Email == email);
-            return applicationUser;
+            var result = await _userManager.CreateAsync(user, password);
+            return result;
         }
-        public async Task<IEnumerable<ApplicationUser>> GetUsersByStatusAsync(string status)
+
+        public async Task<IdentityResult> CreateRoleAsync(string role)
         {
-            var applicationUsers = await _context.Users
-                .Where(u => u.Status == status)
-                .ToListAsync();
-            return applicationUsers;
+            var result = await _roleManager.CreateAsync(new ApplicationRole(role));
+            return result;
+        }
+
+        public async Task<IdentityResult> AddUserToRoleAsync(ApplicationUser user, string role)
+        {
+            var result = await _userManager.AddToRoleAsync(user, role);
+            return result;
+        }
+
+        public async Task<bool> CheckPasswordAsync(ApplicationUser user, string password)
+        {
+            var result = await _userManager.CheckPasswordAsync(user, password);
+            return result;
+        }
+
+        public async Task<ApplicationUser?> GetUserByEmailAsync(string email)
+        {
+            var user = await _userManager.FindByIdAsync(email);
+            return user;
+        }
+
+        public async Task<List<string>> GetUserRolesAsync(ApplicationUser user)
+        {
+            var roles = await _userManager.GetRolesAsync(user);
+            return roles.ToList();
+        }
+
+        public async Task<ApplicationUser?> GetUsersByUserNameAsync(string userName)
+        {
+            var user = await _userManager.FindByNameAsync(userName);
+            return user;
+        }
+
+        public async Task<bool> RoleExistsAsync(string role)
+        {
+            var result = await _roleManager.RoleExistsAsync(role);
+            return result;
+        }
+
+        public async Task<SignInResult> SignInAsync(ApplicationUser user, string password, bool isPersistent)
+        {
+            var result = await _signInManager.PasswordSignInAsync(user, password, isPersistent, lockoutOnFailure: false);
+            return result;
+        }
+
+        public async Task<bool> SignOutAsync()
+        {
+            await _signInManager.SignOutAsync();
+            return true;
         }
     }
-
 }

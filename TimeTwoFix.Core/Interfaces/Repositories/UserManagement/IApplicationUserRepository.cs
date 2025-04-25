@@ -1,12 +1,23 @@
-﻿using TimeTwoFix.Core.Entities.UserManagement;
-using TimeTwoFix.Core.Interfaces.Repositories.Base;
+﻿using Microsoft.AspNetCore.Identity;
+using TimeTwoFix.Core.Entities.UserManagement;
 
 namespace TimeTwoFix.Core.Interfaces.Repositories.IdentityManagement
 {
-    public interface IApplicationUserRepository : IBaseRepository<ApplicationUser>
+    public interface IApplicationUserRepository
     {
-        Task<ApplicationUser> GetUserByEmailAsync(string email);
+        //UserManager and RoleManager Methods
+        Task<IdentityResult> CreateUserAsync(ApplicationUser user, string password);
+        Task<IdentityResult> CreateRoleAsync(string role);
+        Task<IdentityResult> AddUserToRoleAsync(ApplicationUser user, string role);
+        Task<ApplicationUser?> GetUserByEmailAsync(string email);
+        Task<ApplicationUser?> GetUsersByUserNameAsync(string userName);
+        Task<List<string>> GetUserRolesAsync(ApplicationUser user);
+        Task<bool> CheckPasswordAsync(ApplicationUser user, string password);
+        Task<bool> RoleExistsAsync(string role);
 
-        Task<IEnumerable<ApplicationUser>> GetUsersByStatusAsync(string status);
+        //SignInManager Methods
+        Task<SignInResult> SignInAsync(ApplicationUser user, string password, bool isPersistent);
+        Task<bool> SignOutAsync();
+
     }
 }

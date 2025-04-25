@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TimeTwoFix.Application\TimeTwoFix.Application.csproj" />
     <ProjectReference Include="..\TimeTwoFix.Core\TimeTwoFix.Core.csproj" />
     <ProjectReference Include="..\TimeTwoFix.Infrastructure\TimeTwoFix.Infrastructure.csproj" />
   </ItemGroup>
