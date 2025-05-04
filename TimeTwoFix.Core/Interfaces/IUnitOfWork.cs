@@ -1,4 +1,6 @@
-﻿using TimeTwoFix.Core.Interfaces.Repositories.AppointmentManagement;
+﻿using Microsoft.EntityFrameworkCore.Storage;
+using TimeTwoFix.Core.Interfaces.Repositories.AppointmentManagement;
+using TimeTwoFix.Core.Interfaces.Repositories.Base;
 using TimeTwoFix.Core.Interfaces.Repositories.BridgeManagement;
 using TimeTwoFix.Core.Interfaces.Repositories.ClientManagement;
 using TimeTwoFix.Core.Interfaces.Repositories.IdentityManagement;
@@ -34,5 +36,7 @@ namespace TimeTwoFix.Core.Interfaces
         //IGeneralManagerRepository GeneralManagers { get; }
 
         Task<int> SaveChangesAsync();
+        IBaseRepository<T> GetRepository<T>() where T : class;
+        Task<IDbContextTransaction> BeginTransactionAsync();
     }
 }

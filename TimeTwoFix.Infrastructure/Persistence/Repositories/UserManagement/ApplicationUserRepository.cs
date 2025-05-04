@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using TimeTwoFix.Core.Entities.UserManagement;
 using TimeTwoFix.Core.Interfaces.Repositories.IdentityManagement;
 
@@ -25,9 +26,9 @@ namespace TimeTwoFix.Infrastructure.Persistence.Repositories.UserManagement
             return result;
         }
 
-        public async Task<IdentityResult> CreateRoleAsync(string role)
+        public async Task<IdentityResult> CreateRoleAsync(ApplicationRole role)
         {
-            var result = await _roleManager.CreateAsync(new ApplicationRole(role));
+            var result = await _roleManager.CreateAsync(role);
             return result;
         }
 
@@ -77,6 +78,19 @@ namespace TimeTwoFix.Infrastructure.Persistence.Repositories.UserManagement
         {
             await _signInManager.SignOutAsync();
             return true;
+        }
+
+        public async Task<IEnumerable<ApplicationUser?>> GetAllUsers()
+        {
+            var applicationUsers = await _userManager.Users.ToListAsync();
+            return applicationUsers;
+
+        }
+
+        public async Task<IEnumerable<ApplicationRole?>> GetAllRoles()
+        {
+            var applicationRoles = await _roleManager.Roles.ToListAsync();
+            return applicationRoles;
         }
     }
 }

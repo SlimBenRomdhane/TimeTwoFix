@@ -1,0 +1,162 @@
+﻿@using TimeTwoFix.Web.Models.UserModels
+@model Tuple<List<ReadUserViewModel>, List<ReadRoleViewModel>>
+
+@{
+    ViewData["Title"] = "User Management";
+}
+
+<div class="container mt-4">
+    <h2 class="text-center">User Management Dashboard</h2>
+
+    <!-- User Actions -->
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Create New User</h5>
+                    <p class="card-text">Select the type of user you want to create.</p>
+                    <div class="d-grid gap-2">
+                        <a asp-action="CreateMechanic" class="btn btn-primary">Mechanic</a>
+                        <a href="/WorkshopManager/Create" class="btn btn-success">Workshop Manager</a>
+                        <a href="/GeneralManager/Create" class="btn btn-warning">General Manager</a>
+                        <a asp-action="CreateAssistant" class="btn btn-info">Front Desk Assistant</a>
+                        <a asp-action="CreateWareHouseManager" class="btn btn-dark">Warehouse Manager</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Create New Role</h5>
+                    <div class="d-grid gap-2">
+                        <a asp-action="CreateRole" class="btn btn-primary">Create New Role</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Users List Section -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <h4>Registered Users</h4>
+            @if (Model.Item1 != null && Model.Item1.Any())
+            {
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Address</th>
+                            <th>City</th>
+                            <th>Zip Code</th>
+                            <th>Phone Number</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Hire Date</th>
+                            <th>Years of Experience</th>
+                            <th>Last Employer</th>
+                            <th>Status</th>
+                            <th>Specialization</th>
+                            <th>ToolBox Number</th>
+                            <th>Able to Shift</th>
+                            <th>Warehouse Name</th>
+                            <th>Warehouse Location</th>
+                            <th>Able to Shift Warehouse</th>
+                            <th>Team Size</th>
+                            <th>Office Number</th>
+                            <th>Years in Management</th>
+                            <th>Workstation Number</th>
+                            <th>Phone Extension</th>
+                            <th>Spoken Language</th>
+                            <th>Business Knowledge</th>
+                            <th>Image</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var user in Model.Item1)
+                        {
+                            <tr>
+                                <td>@user.FirstName @user.LastName</td>
+                                <td>@user.Address</td>
+                                <td>@user.City</td>
+                                <td>@user.ZipCode</td>
+                                <td>@user.PhoneNumber</td>
+                                <td>@user.Email</td>
+                                <td>@user.Role</td>
+                                <td>@user.HireDate.ToShortDateString()</td>
+                                <td>@user.YearsOfExperience</td>
+                                <td>@user.LastEmployer</td>
+                                <td>@user.Status</td>
+                                <td>@user.Specialization</td>
+                                <td>@user.ToolBoxNumber</td>
+                                <td>@(user.AbleToShift ? "Yes" : "No")</td>
+                                <td>@user.WarehouseName</td>
+                                <td>@user.WarehouseLocation</td>
+                                <td>@(user.AbleToShiftWareHouse ? "Yes" : "No")</td>
+                                <td>@user.TeamSize</td>
+                                <td>@user.OfficeNumber</td>
+                                <td>@user.YearsInManagement</td>
+                                <td>@user.WorkStationNumber</td>
+                                <td>@user.PhoneExtension</td>
+                                <td>@user.SpokenLanguage</td>
+                                <td>@(user.BusinessKnowledge ? "Yes" : "No")</td>
+                                <td>
+                                    <img src="@user.ImageURL" alt="User Image" width="50" height="50" />
+                                </td>
+                                <td>
+                                    <a href="#" class="btn btn-warning btn-sm">Edit</a>
+                                    <a href="#" class="btn btn-danger btn-sm">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <p class="text-muted">No users found.</p>
+            }
+        </div>
+    </div>
+
+    <!-- Roles List Section -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <h4>Available Roles</h4>
+            @if (Model.Item2 != null && Model.Item2.Any())
+            {
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Role Name</th>
+                            <th>Description</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var role in Model.Item2)
+                        {
+                            <tr>
+                                <td>@role.Name</td>
+                                <td>@role.Description</td>
+                                <td>@role.IsActive</td>
+                                <td>
+                                    <a href="/Role/Edit/@role.Name" class="btn btn-warning btn-sm">Edit</a>
+                                    <a href="/Role/Delete/@role.Name" class="btn btn-danger btn-sm">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <p class="text-muted">No roles found.</p>
+            }
+        </div>
+    </div>
+</div>

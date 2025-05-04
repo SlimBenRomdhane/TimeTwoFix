@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore.Storage;
 using TimeTwoFix.Core.Entities.UserManagement;
 using TimeTwoFix.Core.Interfaces;
 using TimeTwoFix.Core.Interfaces.Repositories.AppointmentManagement;
+using TimeTwoFix.Core.Interfaces.Repositories.Base;
 using TimeTwoFix.Core.Interfaces.Repositories.BridgeManagement;
 using TimeTwoFix.Core.Interfaces.Repositories.ClientManagement;
 using TimeTwoFix.Core.Interfaces.Repositories.IdentityManagement;
@@ -11,6 +13,7 @@ using TimeTwoFix.Core.Interfaces.Repositories.SparePartManagement;
 using TimeTwoFix.Core.Interfaces.Repositories.VehicleManagement;
 using TimeTwoFix.Core.Interfaces.Repositories.WorkOrderManagement;
 using TimeTwoFix.Infrastructure.Persistence.Repositories.AppointmentManagement;
+using TimeTwoFix.Infrastructure.Persistence.Repositories.Base;
 using TimeTwoFix.Infrastructure.Persistence.Repositories.BridgeManagement;
 using TimeTwoFix.Infrastructure.Persistence.Repositories.ClientManagement;
 using TimeTwoFix.Infrastructure.Persistence.Repositories.ServiceManagement;
@@ -61,9 +64,20 @@ namespace TimeTwoFix.Infrastructure.Persistence
         public IApplicationUserRepository ApplicationUsers { get; private set; }
         public IMechanicSkillRepository MechanicSkills { get; private set; }
 
+        public Task<IDbContextTransaction> BeginTransactionAsync()
+        {
+            return _context.Database.BeginTransactionAsync();
+        }
+
         public void Dispose()
         {
             _context.Dispose();
+        }
+
+        public IBaseRepository<T> GetRepository<T>() where T : class
+        {
+
+            return new BaseRepository<T>(_context);
         }
 
         public async Task<int> SaveChangesAsync()

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TimeTwoFix.Infrastructure.Persistence;
 
@@ -11,9 +12,11 @@ using TimeTwoFix.Infrastructure.Persistence;
 namespace TimeTwoFix.Infrastructure.Migrations
 {
     [DbContext(typeof(TimeTwoFixDbContext))]
-    partial class TimeTwoFixDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250503210729_updatingZipCode")]
+    partial class updatingZipCode
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -640,48 +643,6 @@ namespace TimeTwoFix.Infrastructure.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("Roles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Description = "Mechanic role with access to work orders and interventions.",
-                            IsActive = true,
-                            Name = "Mechanic",
-                            NormalizedName = "MECHANIC"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Description = "Front Desk Assistant role with access to client management and appointments.",
-                            IsActive = true,
-                            Name = "FrontDeskAssistant",
-                            NormalizedName = "FRONTDESKASSISTANT"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Description = "Warehouse Manager role with access to spare parts and inventory management.",
-                            IsActive = true,
-                            Name = "WareHouseManager",
-                            NormalizedName = "WAREHOUSEMANAGER"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Description = "Workshop Manager role with access to workshop operations and team management.",
-                            IsActive = true,
-                            Name = "WorkshopManager",
-                            NormalizedName = "WORKSHOPMANAGER"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Description = "General Manager role with access to all operations and management.",
-                            IsActive = false,
-                            Name = "GeneralManager",
-                            NormalizedName = "GENERALMANAGER"
-                        });
                 });
 
             modelBuilder.Entity("TimeTwoFix.Core.Entities.UserManagement.ApplicationUser", b =>

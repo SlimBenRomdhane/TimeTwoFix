@@ -20,11 +20,11 @@ namespace TimeTwoFix.Core.Entities.UserManagement
         [MaxLength(50)]
         public string City { get; set; }
 
-        public int PostalCode { get; set; }
+        public int ZipCode { get; set; }
         public string? ImageUrl { get; set; }
 
         [Required]
-        public DateTime HireDate { get; set; }
+        public DateOnly HireDate { get; set; }
 
         public decimal HourlyWage { get; set; }
 

@@ -10,6 +10,7 @@ using TimeTwoFix.Core.Entities.SparePartManagement;
 using TimeTwoFix.Core.Entities.UserManagement;
 using TimeTwoFix.Core.Entities.VehicleManagement;
 using TimeTwoFix.Core.Entities.WorkOrderManagement;
+using TimeTwoFix.Infrastructure.Persistence.DbInit;
 
 namespace TimeTwoFix.Infrastructure.Persistence
 {
@@ -74,6 +75,7 @@ namespace TimeTwoFix.Infrastructure.Persistence
             modelBuilder.Entity<Vehicle>(x => x.HasIndex(v => v.Vin).IsUnique());
             modelBuilder.Entity<SparePart>(x => x.HasIndex(sp => sp.PartCode).IsUnique());
             modelBuilder.Entity<InterventionSparePart>(x => x.HasIndex(isp => isp.DeliveryNote).IsUnique());
+            modelBuilder.SeedRoles();
         }
     }
 }

@@ -11,5 +11,6 @@ namespace TimeTwoFix.Application.ClientServices.Interfaces
         Task<ReadClientDto> GetSingleClientByEmailAsync(string email);
         Task<IEnumerable<ReadClientDto>> GetClientsByPhoneNumberAsync(string phoneNumber);
         Task<IEnumerable<ReadClientDto>> GetClientsByAddressAsync(string address);
+
     }
 }

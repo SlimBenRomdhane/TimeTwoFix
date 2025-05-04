@@ -12,8 +12,8 @@ using TimeTwoFix.Infrastructure.Persistence;
 namespace TimeTwoFix.Infrastructure.Migrations
 {
     [DbContext(typeof(TimeTwoFixDbContext))]
-    [Migration("20250420163953_InitialDataBase")]
-    partial class InitialDataBase
+    [Migration("20250503213520_seedingRoles")]
+    partial class seedingRoles
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -619,6 +619,14 @@ namespace TimeTwoFix.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Name")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
@@ -635,6 +643,48 @@ namespace TimeTwoFix.Infrastructure.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("Roles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "Mechanic role with access to work orders and interventions.",
+                            IsActive = true,
+                            Name = "Mechanic",
+                            NormalizedName = "MECHANIC"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "Front Desk Assistant role with access to client management and appointments.",
+                            IsActive = true,
+                            Name = "FrontDeskAssistant",
+                            NormalizedName = "FRONTDESKASSISTANT"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "Warehouse Manager role with access to spare parts and inventory management.",
+                            IsActive = true,
+                            Name = "WareHouseManager",
+                            NormalizedName = "WAREHOUSEMANAGER"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Description = "Workshop Manager role with access to workshop operations and team management.",
+                            IsActive = true,
+                            Name = "WorkshopManager",
+                            NormalizedName = "WORKSHOPMANAGER"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Description = "General Manager role with access to all operations and management.",
+                            IsActive = false,
+                            Name = "GeneralManager",
+                            NormalizedName = "GENERALMANAGER"
+                        });
                 });
 
             modelBuilder.Entity("TimeTwoFix.Core.Entities.UserManagement.ApplicationUser", b =>
@@ -667,8 +717,8 @@ namespace TimeTwoFix.Infrastructure.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<DateTime>("HireDate")
-                        .HasColumnType("datetime2");
+                    b.Property<DateOnly>("HireDate")
+                        .HasColumnType("date");
 
                     b.Property<decimal>("HourlyWage")
                         .HasColumnType("decimal(18,2)");
@@ -696,9 +746,6 @@ namespace TimeTwoFix.Infrastructure.Migrations
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PostalCode")
-                        .HasColumnType("int");
-
                     b.Property<string>("RoleTypeDiscriminator")
                         .IsRequired()
                         .HasMaxLength(21)
@@ -712,6 +759,9 @@ namespace TimeTwoFix.Infrastructure.Migrations
                     b.Property<string>("UserName")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("ZipCode")
+                        .HasColumnType("int");
 
                     b.Property<int>("yearsOfExperience")
                         .HasColumnType("int");

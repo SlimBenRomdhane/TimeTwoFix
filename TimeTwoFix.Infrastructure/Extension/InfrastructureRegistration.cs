@@ -4,7 +4,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TimeTwoFix.Core.Entities.UserManagement;
 using TimeTwoFix.Core.Interfaces;
+using TimeTwoFix.Core.Interfaces.Repositories.ClientManagement;
 using TimeTwoFix.Infrastructure.Persistence;
+using TimeTwoFix.Infrastructure.Persistence.Repositories.ClientManagement;
 
 namespace TimeTwoFix.Infrastructure.Extension
 {
@@ -27,6 +29,7 @@ namespace TimeTwoFix.Infrastructure.Extension
             //Unit of Work Registration
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             // Add other infrastructure services here
+            //services.AddScoped<IClientRepository, ClientRepository>();
             return services;
         }
     }
