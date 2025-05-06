@@ -9,7 +9,7 @@ namespace TimeTwoFix.Application.ClientServices.Mapping
         public ClientProfileMappingApplication()
         {
             CreateMap<Client, ReadClientDto>();
-            CreateMap<CreateClientDto, Client>().ReverseMap();
+            CreateMap<CreateClientDto, Client>();
             CreateMap<UpdateClientDto, Client>().ReverseMap();
 
         }

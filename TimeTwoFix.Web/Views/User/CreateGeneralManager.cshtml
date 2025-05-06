@@ -1,16 +1,16 @@
-﻿@model TimeTwoFix.Web.Models.UserModels.CreateFrontDeskAssistantViewModel
+﻿@model TimeTwoFix.Web.Models.UserModels.CreateGeneralManagerViewModel
 
 @{
-    ViewData["Title"] = "CreateAssistant";
+    ViewData["Title"] = "CreateGeneralManager";
 }
 
-<h1>CreateAssistant</h1>
+<h1>CreateGeneralManager</h1>
 
 
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="CreateAssistant">
+        <form asp-action="CreateGeneralManager">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="FirstName" class="control-label"></label>
@@ -52,7 +52,6 @@
                 <input asp-for="Password" class="form-control" />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
-            
             <div class="form-group">
                 <label asp-for="ImageURL" class="control-label"></label>
                 <input asp-for="ImageURL" class="form-control" />
@@ -69,24 +68,19 @@
                 <span asp-validation-for="LastEmployer" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="WorkStationNumber" class="control-label"></label>
-                <input asp-for="WorkStationNumber" class="form-control" />
-                <span asp-validation-for="WorkStationNumber" class="text-danger"></span>
+                <label asp-for="OfficeNumber" class="control-label"></label>
+                <input asp-for="OfficeNumber" class="form-control" />
+                <span asp-validation-for="OfficeNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PhoneExtension" class="control-label"></label>
-                <input asp-for="PhoneExtension" class="form-control" />
-                <span asp-validation-for="PhoneExtension" class="text-danger"></span>
+                <label asp-for="YearsInManagement" class="control-label"></label>
+                <input asp-for="YearsInManagement" class="form-control" />
+                <span asp-validation-for="YearsInManagement" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="SpokenLanguage" class="control-label"></label>
-                <input asp-for="SpokenLanguage" class="form-control" />
-                <span asp-validation-for="SpokenLanguage" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="BusinessKnowledge" /> @Html.DisplayNameFor(model => model.BusinessKnowledge)
-                </label>
+                <label asp-for="HireDate" class="control-label"></label>
+                <input asp-for="HireDate" class="form-control" />
+                <span asp-validation-for="HireDate" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

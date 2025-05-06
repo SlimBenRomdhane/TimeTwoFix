@@ -1,89 +1,69 @@
 ﻿@model IEnumerable<TimeTwoFix.Web.Models.ClientModels.ReadClientViewModel>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Clients List";
 }
 
-<h1>Index</h1>
+<div class="container mt-4">
+    <h1 class="text-center">Clients List</h1>
+    <form asp-action="Index" method="post" class="mb-4">
+        <div class="row">
+            <div class="col-md-3">
+                <input type="text" name="searchName" class="form-control" placeholder="Search by Name..." />
+            </div>
+            <div class="col-md-3">
+                <input type="text" name="searchPhone" class="form-control" placeholder="Search by Phone..." />
+            </div>
+            <div class="col-md-3">
+                <input type="text" name="searchEmail" class="form-control" placeholder="Search by Email..." />
+            </div>
+            
+        </div>
+        <div class="text-end mt-2">
+            <button type="submit" class="btn btn-primary">
+                <i class="bi bi-search"></i> Search
+            </button>
+            <a asp-action="Index" class="btn btn-primary">
+                <i class="bi bi-search"></i> Reset
+            </a>
+        </div>
+    </form>
+    <div class="text-end mb-3">
+        <a asp-action="Create" class="btn btn-primary">
+            <i class="bi bi-plus-lg"></i> Create New Client
+        </a>
+    </div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table table-striped">
-    <thead>
-        <tr>
-            @* <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th> *@
-            <th>
-                @Html.DisplayNameFor(model => model.FirstName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LastName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PhoneNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Address)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.City)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Notes)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreatedAt)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UpdatedAt)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            @* <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td> *@
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PhoneNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Address)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.City)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Notes)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedAt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UpdatedAt)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new {  id=item.Id }) |
-                @Html.ActionLink("Details", "Details", new {  id=item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4">
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.FirstName @item.LastName</h5>
+                        <p class="card-text">
+                            <strong>Phone:</strong> @item.PhoneNumber <br>
+                            <strong>Address:</strong> @item.Address, @item.City <br>
+                            <strong>Email:</strong> @item.Email <br>
+                            <strong>Notes:</strong> @item.Notes <br>
+                            <small class="text-muted">
+                                Created: @item.CreatedAt | Updated: @item.UpdatedAt
+                            </small>
+                        </p>
+                        <div class="d-flex justify-content-between">
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm">
+                                <i class="bi bi-pencil-square"></i> Edit
+                            </a>
+                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info btn-sm">
+                                <i class="bi bi-eye"></i> Details
+                            </a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">
+                                <i class="bi bi-trash"></i> Delete
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

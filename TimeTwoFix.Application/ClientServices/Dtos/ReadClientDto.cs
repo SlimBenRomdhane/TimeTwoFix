@@ -1,4 +1,6 @@
-﻿namespace TimeTwoFix.Application.ClientServices.Dtos
+﻿using TimeTwoFix.Core.Entities.VehicleManagement;
+
+namespace TimeTwoFix.Application.ClientServices.Dtos
 {
     public class ReadClientDto
     {
@@ -9,6 +11,8 @@
         public string Address { get; set; }
         public string City { get; set; }
         public string Email { get; set; }
+        public string? Notes { get; set; }
+        public List<Vehicle> Vehicles { get; set; } = new List<Vehicle>();
         public DateTime? CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
 

@@ -8,6 +8,8 @@ namespace TimeTwoFix.Application.UserServices.Dtos
 {
     public class ReadUserDto
     {
+        ///Displying the user type in the UI
+        public string UserType { get; set; }
         //Common properties
         public string FirstName { get; set; }
         public string LastName { get; set; }

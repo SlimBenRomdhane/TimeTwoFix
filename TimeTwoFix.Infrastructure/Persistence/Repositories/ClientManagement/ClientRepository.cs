@@ -11,32 +11,29 @@ namespace TimeTwoFix.Infrastructure.Persistence.Repositories.ClientManagement
         {
         }
 
-        public async Task<IEnumerable<Client>> GetClientsByNameAsync(string name)
+        public Task<Client?> GetClientByEmail(string email)
         {
-            return await _context.Clients
-                .Where(c => c.FirstName.Contains(name) || c.LastName.Contains(name))
-                .ToListAsync();
-        }
-
-        public async Task<IEnumerable<Client>> GetClientsByEmailAsync(string email)
-        {
-            return await _context.Clients.Where(c => c.Email.Contains(email)).ToListAsync();
-        }
-
-        public async Task<Client> GetSingleClientByEmailAsync(string email)
-        {
-            var client = await _context.Clients.FirstOrDefaultAsync(c => c.Email == email);
+            var client = _context.Clients.Where(c => c.Email == email).FirstOrDefaultAsync();
             return client;
         }
 
-        public async Task<IEnumerable<Client>> GetClientsByPhoneNumberAsync(string phoneNumber)
+        public async Task<IEnumerable<Client>> GetClientsByMultipleParam(string searchName, string searchPhone, string searchEmail)
         {
-            return await _context.Clients.Where(c => c.PhoneNumber.Contains(phoneNumber)).ToListAsync();
-        }
+            var query = _context.Clients.AsQueryable();
+            if (!string.IsNullOrEmpty(searchName))
+            {
+                query = query.Where(c => c.FirstName.Contains(searchName) || c.LastName.Contains(searchName));
+            }
+            if (!string.IsNullOrEmpty(searchPhone))
+            {
+                query = query.Where(c => c.PhoneNumber.Contains(searchPhone));
+            }
+            if (!string.IsNullOrEmpty(searchEmail))
+            {
+                query = query.Where(c => c.Email.Contains(searchEmail));
+            }
 
-        public async Task<IEnumerable<Client>> GetClientsByAddressAsync(string address)
-        {
-            return await _context.Clients.Where(c => c.Address.Contains(address)).ToListAsync();
+            return await query.AsQueryable().ToListAsync();
         }
     }
 }

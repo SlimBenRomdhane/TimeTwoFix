@@ -2,7 +2,7 @@
 
 namespace TimeTwoFix.Web.Models.UserModels
 {
-    public class CreateFrontDeskAssistantViewModel
+    public class CreateWorkshopManagerViewModel
     {
         //Common properties
         [Required, MaxLength(50)]
@@ -29,12 +29,7 @@ namespace TimeTwoFix.Web.Models.UserModels
         public string LastEmployer { get; set; }
         public string Status { get; set; }
 
-
-        //Assistant properties
-        public string? WorkStationNumber { get; set; }
-        public string? PhoneExtension { get; set; }
-        public string? SpokenLanguage { get; set; }
-        public bool BusinessKnowledge { get; set; }
-
+        //Workshop Manager properties
+        public int TeamSize { get; set; }
     }
 }

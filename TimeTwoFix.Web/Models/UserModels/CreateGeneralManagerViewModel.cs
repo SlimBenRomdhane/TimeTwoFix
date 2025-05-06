@@ -2,8 +2,9 @@
 
 namespace TimeTwoFix.Web.Models.UserModels
 {
-    public class CreateFrontDeskAssistantViewModel
+    public class CreateGeneralManagerViewModel
     {
+
         //Common properties
         [Required, MaxLength(50)]
         public required string FirstName { get; set; }
@@ -30,11 +31,8 @@ namespace TimeTwoFix.Web.Models.UserModels
         public string Status { get; set; }
 
 
-        //Assistant properties
-        public string? WorkStationNumber { get; set; }
-        public string? PhoneExtension { get; set; }
-        public string? SpokenLanguage { get; set; }
-        public bool BusinessKnowledge { get; set; }
-
+        //General Manager properties
+        public string? OfficeNumber { get; set; }
+        public int YearsInManagement { get; set; }
     }
 }

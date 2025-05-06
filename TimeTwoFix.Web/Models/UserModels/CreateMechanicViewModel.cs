@@ -9,7 +9,7 @@ namespace TimeTwoFix.Web.Models.UserModels
         public required string FirstName { get; set; }
         [Required, MaxLength(50)]
         public required string LastName { get; set; }
-        [Required, MaxLength(10)]
+        [Required, MaxLength(50)]
         public required string Address { get; set; }
         [Required, MaxLength(50)]
         public string City { get; set; }
@@ -28,7 +28,7 @@ namespace TimeTwoFix.Web.Models.UserModels
         public DateOnly HireDate { get; set; }
         public int YearsOfExperience { get; set; }
         public string LastEmployer { get; set; }
-        public string Status { get; set; }
+        //public string Status { get; set; }
 
         public string? Specialization { get; set; }
         [Required, MaxLength(50)]

@@ -12,44 +12,24 @@ namespace TimeTwoFix.Application.ClientServices.Services
         {
         }
 
-        public async Task<IEnumerable<ReadClientDto>> GetClientsByAddressAsync(string address)
+        public async Task<ReadClientDto?> GetClientByEmail(string email)
         {
-            var res = await _unitOfWork.Clients.GetClientsByAddressAsync(address);
-            var clientsDto = _mapper.Map<IEnumerable<ReadClientDto>>(res);
-            return clientsDto;
-        }
-
-        public async Task<IEnumerable<ReadClientDto>> GetClientsByEmailAsync(string email)
-        {
-            var res = await _unitOfWork.Clients.GetClientsByEmailAsync(email);
-            var clientsDto = _mapper.Map<IEnumerable<ReadClientDto>>(res);
-            return clientsDto;
-        }
-
-        public async Task<IEnumerable<ReadClientDto>> GetClientsByNameAsync(string name)
-        {
-            var res = await _unitOfWork.Clients.GetClientsByNameAsync(name);
-            var clientsDto = _mapper.Map<IEnumerable<ReadClientDto>>(res);
-            return clientsDto;
-        }
-
-        public async Task<IEnumerable<ReadClientDto>> GetClientsByPhoneNumberAsync(string phoneNumber)
-        {
-            var res = await _unitOfWork.Clients.GetClientsByPhoneNumberAsync(phoneNumber);
-            var clientsDto = _mapper.Map<IEnumerable<ReadClientDto>>(res);
-            return clientsDto;
-        }
-
-        public async Task<ReadClientDto> GetSingleClientByEmailAsync(string email)
-        {
-            var res = await _unitOfWork.Clients.GetSingleClientByEmailAsync(email);
-            if (res == null)
+            var client = await _unitOfWork.Clients.GetClientByEmail(email);
+            if (client == null)
             {
-                throw new Exception("Client not found");
+                return null;
             }
-            var clientDto = _mapper.Map<ReadClientDto>(res);
+            var clientDto = _mapper.Map<ReadClientDto>(client);
             return clientDto;
         }
+
+        public async Task<IEnumerable<ReadClientDto>> GetClientByMultipleParam(string searchName, string searchPhone, string searchEmail)
+        {
+            var res = await _unitOfWork.Clients.GetClientsByMultipleParam(searchName, searchPhone, searchEmail);
+            var clientsDto = _mapper.Map<IEnumerable<ReadClientDto>>(res);
+            return clientsDto;
+        }
+
     }
 
 }

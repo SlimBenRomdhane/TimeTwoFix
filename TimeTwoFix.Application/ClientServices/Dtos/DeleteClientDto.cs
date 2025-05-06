@@ -1,8 +1,6 @@
-﻿using TimeTwoFix.Core.Entities.VehicleManagement;
-
-namespace TimeTwoFix.Web.Models.ClientModels
+﻿namespace TimeTwoFix.Application.ClientServices.Dtos
 {
-    public class ReadClientViewModel
+    public class DeleteClientDto
     {
         public int Id { get; set; }
         public string FirstName { get; set; }
@@ -12,8 +10,6 @@ namespace TimeTwoFix.Web.Models.ClientModels
         public string City { get; set; }
         public string Email { get; set; }
         public string? Notes { get; set; }
-        public List<Vehicle> Vehicles { get; set; }
-        public DateTime? CreatedAt { get; set; }
-        public DateTime? UpdatedAt { get; set; }
+
     }
 }

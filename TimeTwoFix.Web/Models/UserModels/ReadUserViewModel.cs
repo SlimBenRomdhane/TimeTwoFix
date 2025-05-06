@@ -2,6 +2,9 @@
 {
     public class ReadUserViewModel
     {
+        ///Displying the user type in the UI
+        public string UserType { get; set; }
+
         //Common properties
         public string FirstName { get; set; }
         public string LastName { get; set; }

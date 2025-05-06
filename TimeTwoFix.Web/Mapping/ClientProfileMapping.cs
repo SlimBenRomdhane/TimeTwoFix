@@ -13,6 +13,9 @@ namespace TimeTwoFix.Web.Mapping
             CreateMap<CreateClientViewModel, CreateClientDto>();
             CreateMap<ReadClientDto, UpdateClientViewModel>().ReverseMap();
             CreateMap<UpdateClientViewModel, UpdateClientDto>().ReverseMap();
+            CreateMap<DeleteClientViewModel, DeleteClientDto>().ReverseMap();
+            CreateMap<Client, DeleteClientDto>();
+
             //CreateMap<UpdateClientViewModel, Client>();
 
         }

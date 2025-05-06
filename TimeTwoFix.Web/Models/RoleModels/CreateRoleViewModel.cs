@@ -1,4 +1,4 @@
-﻿namespace TimeTwoFix.Web.Models.UserModels
+﻿namespace TimeTwoFix.Web.Models.RoleModels
 {
     public class CreateRoleViewModel
     {

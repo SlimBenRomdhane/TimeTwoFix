@@ -17,5 +17,11 @@ namespace TimeTwoFix.Core.Common
 
         [MaxLength(50)]
         public string? UpdatedBy { get; set; }
+
+        public bool IsDeleted { get; set; } = false;
+        public DateTime? DeletedAt { get; set; }
+        [MaxLength(50)]
+        public string? DeletedBy { get; set; }
+
     }
 }
