@@ -12,6 +12,13 @@ namespace TimeTwoFix.Application.ClientServices.Services
         {
         }
 
+        public async Task<IEnumerable<ReadClientDto>> GetAllDeletedClients()
+        {
+            var deletedClients = await _unitOfWork.Clients.GetAllDeletedClients();
+            var clientsDto = _mapper.Map<IEnumerable<ReadClientDto>>(deletedClients);
+            return clientsDto;
+        }
+
         public async Task<ReadClientDto?> GetClientByEmail(string email)
         {
             var client = await _unitOfWork.Clients.GetClientByEmail(email);

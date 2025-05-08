@@ -11,6 +11,15 @@ namespace TimeTwoFix.Infrastructure.Persistence.Repositories.ClientManagement
         {
         }
 
+        public async Task<IEnumerable<Client>> GetAllDeletedClients()
+        {
+            var deletedClients = await _context.Clients
+                .IgnoreQueryFilters()
+                .Where(c => c.IsDeleted)
+                .ToListAsync();
+            return deletedClients;
+        }
+
         public Task<Client?> GetClientByEmail(string email)
         {
             var client = _context.Clients.Where(c => c.Email == email).FirstOrDefaultAsync();

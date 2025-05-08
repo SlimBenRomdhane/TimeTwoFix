@@ -1,0 +1,28 @@
+﻿:root {
+    --primary-color: #3F7CAC; /* Professional teal */
+    --secondary-color: #2D4059; /* Balanced charcoal */
+    --background-color: #D3D3D3; /* Light slate for better readability */
+    --highlight-color: #EAEAEA; /* Clean silver for contrast */
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--secondary-color);
+}
+
+.card {
+    background-color: var(--highlight-color);
+    color: var(--primary-color);
+    border: 2px solid var(--secondary-color);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--secondary-color);
+}
+
+.btn-secondary {
+    background-color: var(--highlight-color);
+    border-color: var(--primary-color);
+    color: var(--secondary-color);
+}

@@ -32,6 +32,16 @@ namespace TimeTwoFix.Web.Controllers
             return View(clientsViewModel);
         }
 
+        public async Task<IActionResult> LoadDeleted()
+        {
+
+            var clients = await _clientServices.GetAllDeletedClients();
+
+            var clientsDto = _mapper.Map<IEnumerable<ReadClientDto>>(clients);
+            var clientsViewModel = _mapper.Map<IEnumerable<ReadClientViewModel>>(clientsDto);
+
+            return View("Index", clientsViewModel);
+        }
         [HttpPost]
         public async Task<IActionResult> Index(string searchName, string searchPhone, string searchEmail)
         {
@@ -173,6 +183,7 @@ namespace TimeTwoFix.Web.Controllers
             catch
             {
                 return View();
+
             }
         }
 

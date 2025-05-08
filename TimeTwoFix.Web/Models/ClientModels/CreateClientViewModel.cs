@@ -24,7 +24,11 @@ namespace TimeTwoFix.Web.Models.ClientModels
 
         [MaxLength(50)]
         [EmailAddress]
-        public string Email { get; set; }
+        public string? Email { get; set; }
+
+        [MaxLength(255)]
+        [DataType(DataType.MultilineText)]
+        public string? Notes { get; set; }
 
     }
 }
