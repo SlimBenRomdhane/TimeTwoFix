@@ -6,16 +6,22 @@ namespace TimeTwoFix.Web.Models.UserModels
     public class CreateMechanicViewModel
     {
         [Required, MaxLength(50)]
-        public required string FirstName { get; set; }
+        public string FirstName { get; set; }
+
         [Required, MaxLength(50)]
-        public required string LastName { get; set; }
+        public string LastName { get; set; }
+
         [Required, MaxLength(50)]
-        public required string Address { get; set; }
+        public string Address { get; set; }
+
         [Required, MaxLength(50)]
         public string City { get; set; }
+
         public int ZipCode { get; set; }
+
         [Required, MaxLength(50)]
-        public required string PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
+
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
@@ -24,13 +30,16 @@ namespace TimeTwoFix.Web.Models.UserModels
         public string Password { get; set; }
 
         public string ImageURL { get; set; }
+
         [DataType(DataType.Date)]
         public DateOnly HireDate { get; set; }
+
         public int YearsOfExperience { get; set; }
         public string LastEmployer { get; set; }
         //public string Status { get; set; }
 
         public string? Specialization { get; set; }
+
         [Required, MaxLength(50)]
         public string ToolBoxNumber { get; set; }
 

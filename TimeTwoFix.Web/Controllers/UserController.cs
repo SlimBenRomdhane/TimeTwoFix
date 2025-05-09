@@ -8,21 +8,22 @@ using TimeTwoFix.Web.Models.UserModels;
 
 namespace TimeTwoFix.Web.Controllers
 {
-
     public class UserController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
+
         public UserController(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
-
         }
+
         public IActionResult CreateRole()
         {
             return View();
         }
+
         [HttpPost]
         public async Task<IActionResult> CreateRole(CreateRoleViewModel createRoleViewModel)
         {
@@ -47,18 +48,17 @@ namespace TimeTwoFix.Web.Controllers
                 {
                     ModelState.AddModelError("RoleName", "This role already exists.");
                     return View(createRoleViewModel);
-
                 }
             }
             return View();
         }
+
         public async Task<IActionResult> Index()
         {
             var users = (await _unitOfWork.ApplicationUsers.GetAllUsers()).ToList();
             var roles = (await _unitOfWork.ApplicationUsers.GetAllRoles()).ToList();
             var userViewModel = _mapper.Map<IEnumerable<ReadUserViewModel>>(users).ToList();
             var roleViewModel = _mapper.Map<IEnumerable<ReadRoleViewModel>>(roles).ToList();
-
 
             //var mechanics = users.OfType<Mechanic>().ToList();
             //var assistants = users.OfType<FrontDeskAssistant>().ToList();
@@ -71,16 +71,14 @@ namespace TimeTwoFix.Web.Controllers
             return View(viewModel);
         }
 
-
         public IActionResult CreateMechanic()
         {
-
             return View();
         }
+
         [HttpPost]
         public async Task<IActionResult> CreateMechanic(CreateMechanicViewModel createMechanicViewModel)
         {
-
             if (!ModelState.IsValid)
             {
                 return View(createMechanicViewModel);
@@ -105,7 +103,6 @@ namespace TimeTwoFix.Web.Controllers
                     }
                     await transaction.CommitAsync();
                     return RedirectToAction("Index");
-
                 }
                 catch (Exception ex)
                 {
@@ -114,14 +111,13 @@ namespace TimeTwoFix.Web.Controllers
                     return View(createMechanicViewModel);
                 }
             }
-
         }
 
         public IActionResult CreateAssistant()
         {
-
             return View();
         }
+
         [HttpPost]
         public async Task<IActionResult> CreateAssistant(CreateFrontDeskAssistantViewModel createFrontDeskAssistantViewModel)
         {
@@ -149,7 +145,6 @@ namespace TimeTwoFix.Web.Controllers
                     }
                     await transaction.CommitAsync();
                     return RedirectToAction("Index");
-
                 }
                 catch (Exception ex)
                 {
@@ -159,10 +154,12 @@ namespace TimeTwoFix.Web.Controllers
                 }
             }
         }
+
         public IActionResult CreateWareHouseManager()
         {
             return View();
         }
+
         [HttpPost]
         public async Task<IActionResult> CreateWareHouseManager(CreateWareHouseManagerViewModel createWareHouseManagerViewModel)
         {
@@ -200,11 +197,11 @@ namespace TimeTwoFix.Web.Controllers
             }
         }
 
-
         public IActionResult CreateWorkshopManager()
         {
             return View();
         }
+
         [HttpPost]
         public async Task<IActionResult> CreateWorkshopManager(CreateWorkshopManagerViewModel createWorkshopManagerViewModel)
         {
@@ -242,11 +239,11 @@ namespace TimeTwoFix.Web.Controllers
             }
         }
 
-
         public IActionResult CreateGeneralManager()
         {
             return View();
         }
+
         [HttpPost]
         public async Task<IActionResult> CreateGeneralManager(CreateGeneralManagerViewModel createGeneralManagerViewModel)
         {

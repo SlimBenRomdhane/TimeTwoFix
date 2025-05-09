@@ -20,9 +20,19 @@ namespace TimeTwoFix.Infrastructure.Persistence.Repositories.Base
             return entity;
         }
 
+        public async Task AttachAsyncGeneric(T entity)
+        {
+            _context.Attach(entity);
+        }
+
         public async Task DeleteAsyncGeneric(T entity)
         {
             _dbSet.Remove(entity);
+        }
+
+        public async Task DetachAsyncGeneric(T entity)
+        {
+            _context.Entry(entity).State = EntityState.Detached;
         }
 
         public async Task<IEnumerable<T>> GetAllAsyncGeneric()

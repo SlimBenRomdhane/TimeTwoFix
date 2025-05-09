@@ -11,5 +11,9 @@
         Task<T?> GetByIdAsyncGeneric(int id);
 
         Task<IEnumerable<T>> GetAllAsyncGeneric();
+
+        Task AttachAsyncGeneric(T entity);
+
+        Task DetachAsyncGeneric(T entity);
     }
 }

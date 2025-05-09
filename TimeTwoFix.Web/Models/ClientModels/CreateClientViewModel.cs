@@ -29,6 +29,5 @@ namespace TimeTwoFix.Web.Models.ClientModels
         [MaxLength(255)]
         [DataType(DataType.MultilineText)]
         public string? Notes { get; set; }
-
     }
 }

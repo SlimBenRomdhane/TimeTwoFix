@@ -7,6 +7,7 @@
 
         //Common properties
         public string FirstName { get; set; }
+
         public string LastName { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
@@ -21,20 +22,21 @@
         public string LastEmployer { get; set; }
         public string Status { get; set; }
 
-
         //Assistant properties
         public string? WorkStationNumber { get; set; }
+
         public string? PhoneExtension { get; set; }
         public string? SpokenLanguage { get; set; }
         public bool BusinessKnowledge { get; set; }
 
-
         //General Manager properties
         public string? OfficeNumber { get; set; }
+
         public int YearsInManagement { get; set; }
 
         //Mechanic properties
         public string? Specialization { get; set; }
+
         public string ToolBoxNumber { get; set; }
         public bool AbleToShift { get; set; }
 

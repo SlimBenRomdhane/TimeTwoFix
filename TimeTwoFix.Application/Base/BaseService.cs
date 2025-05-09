@@ -15,14 +15,18 @@ namespace TimeTwoFix.Application.Base
             _baseRepository = unitOfWork.GetRepository<T>();
             _unitOfWork = unitOfWork;
             _mapper = mapper;
-
         }
+
         public async Task<T> AddAsyncServiceGeneric(T entity)
         {
             var res = await _baseRepository.AddAsyncGeneric(entity);
 
             return res;
+        }
 
+        public async Task AttachAsyncServiceGeneric(T entity)
+        {
+            await _baseRepository.AttachAsyncGeneric(entity);
         }
 
         public async Task DeleteAsyncServiceGeneric(int id)
@@ -33,7 +37,11 @@ namespace TimeTwoFix.Application.Base
                 throw new Exception("Entity not found");
             }
             await _baseRepository.DeleteAsyncGeneric(enityToDelete);
+        }
 
+        public async Task DetachAsyncServiceGeneric(T entity)
+        {
+            await _baseRepository.DetachAsyncGeneric(entity);
         }
 
         public async Task<IEnumerable<T>> GetAllAsyncServiceGeneric()
@@ -55,7 +63,6 @@ namespace TimeTwoFix.Application.Base
         public async Task UpdateAsyncServiceGeneric(T entity)
         {
             await _baseRepository.UpdateAsyncGeneric(entity);
-
         }
     }
 }

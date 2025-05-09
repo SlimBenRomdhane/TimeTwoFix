@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
 using TimeTwoFix.Application.ClientServices.Dtos;
 using TimeTwoFix.Application.ClientServices.Interfaces;
 using TimeTwoFix.Core.Entities.ClientManagement;
@@ -14,6 +13,7 @@ namespace TimeTwoFix.Web.Controllers
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
         private readonly IClientServices _clientServices;
+
         public ClientController(IUnitOfWork unitOfWork, IMapper mapper, IClientServices clientServices)
         {
             _unitOfWork = unitOfWork;
@@ -22,10 +22,15 @@ namespace TimeTwoFix.Web.Controllers
         }
 
         // GET: ClientController
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int pageNumber, int pageSize)
         {
-
             var clients = await _clientServices.GetAllAsyncServiceGeneric();
+            ////Apply pagination
+            //var pagedClients = clients.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+            //ViewBag.PageNumber = pageNumber;
+            //ViewBag.PageSize = pageSize;
+            //ViewBag.TotalPages = (int)Math.Ceiling((double)pagedClients.Count / pageSize);
+
             var clientsDto = _mapper.Map<IEnumerable<ReadClientDto>>(clients);
             var clientsViewModel = _mapper.Map<IEnumerable<ReadClientViewModel>>(clientsDto);
 
@@ -34,14 +39,14 @@ namespace TimeTwoFix.Web.Controllers
 
         public async Task<IActionResult> LoadDeleted()
         {
-
             var clients = await _clientServices.GetAllDeletedClients();
 
             var clientsDto = _mapper.Map<IEnumerable<ReadClientDto>>(clients);
             var clientsViewModel = _mapper.Map<IEnumerable<ReadClientViewModel>>(clientsDto);
 
-            return View("Index", clientsViewModel);
+            return View(clientsViewModel);
         }
+
         [HttpPost]
         public async Task<IActionResult> Index(string searchName, string searchPhone, string searchEmail)
         {
@@ -49,7 +54,6 @@ namespace TimeTwoFix.Web.Controllers
             var clientsDto = _mapper.Map<IEnumerable<ReadClientDto>>(clients);
             var clientsViewModel = _mapper.Map<IEnumerable<ReadClientViewModel>>(clientsDto);
             return View(clientsViewModel);
-
         }
 
         // GET: ClientController/Details/5
@@ -72,7 +76,6 @@ namespace TimeTwoFix.Web.Controllers
             {
                 return BadRequest();
             }
-
         }
 
         // GET: ClientController/Create
@@ -141,7 +144,6 @@ namespace TimeTwoFix.Web.Controllers
                 await _clientServices.UpdateAsyncServiceGeneric(updatedClient);
                 await _unitOfWork.SaveChangesAsync();
 
-
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -183,9 +185,72 @@ namespace TimeTwoFix.Web.Controllers
             catch
             {
                 return View();
-
             }
         }
 
+        public async Task<IActionResult> Restore(int id)
+        {
+            try
+            {
+                var deletedClients = await _clientServices.GetAllDeletedClients();
+                var clientToRestore = deletedClients.Where(c => c.Id == id).FirstOrDefault();
+                if (clientToRestore == null)
+                {
+                    return NotFound();
+                }
+                var existingClient = await _clientServices.GetByIdAsyncServiceGeneric(id);
+                if (existingClient != null)
+                {
+                    await _clientServices.DetachAsyncServiceGeneric(existingClient);
+                }
+                var client = _mapper.Map<Client>(clientToRestore);
+                client.IsDeleted = false;
+                client.DeletedAt = null;
+                await _clientServices.AttachAsyncServiceGeneric(client);
+                await _unitOfWork.Clients.UpdateAsyncGeneric(client);
+
+                var nb = await _unitOfWork.SaveChangesAsync();
+                Console.WriteLine($"Number of changes saved: {nb}");
+                return RedirectToAction(nameof(LoadDeleted));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error restoring client: {ex.Message}");
+                Console.WriteLine($"Stack Trace: {ex.StackTrace}");
+                return BadRequest(ex.Message);
+            }
+        }
+
+        public async Task<IActionResult> DeletePermanently(int id)
+        {
+            try
+            {
+                var deletedClients = await _clientServices.GetAllDeletedClients();
+                var clientToDelete = deletedClients.Where(c => c.Id == id).FirstOrDefault();
+                if (clientToDelete == null)
+                {
+                    return NotFound();
+                }
+                var existingClient = await _clientServices.GetByIdAsyncServiceGeneric(id);
+                if (existingClient != null)
+                {
+                    await _clientServices.DetachAsyncServiceGeneric(existingClient);
+                }
+                var client = _mapper.Map<Client>(clientToDelete);
+
+                await _clientServices.AttachAsyncServiceGeneric(client);
+                await _unitOfWork.Clients.DeleteAsyncGeneric(client);
+
+                var nb = await _unitOfWork.SaveChangesAsync();
+                Console.WriteLine($"Number of changes saved: {nb}");
+                return RedirectToAction(nameof(LoadDeleted));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error restoring client: {ex.Message}");
+                Console.WriteLine($"Stack Trace: {ex.StackTrace}");
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }

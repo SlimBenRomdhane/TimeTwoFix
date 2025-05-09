@@ -20,8 +20,8 @@ namespace TimeTwoFix.Core.Common
 
         public bool IsDeleted { get; set; } = false;
         public DateTime? DeletedAt { get; set; }
+
         [MaxLength(50)]
         public string? DeletedBy { get; set; }
-
     }
 }

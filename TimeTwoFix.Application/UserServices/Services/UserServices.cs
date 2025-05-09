@@ -1,9 +1,4 @@
 ﻿using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TimeTwoFix.Application.Base;
 using TimeTwoFix.Application.UserServices.Interfaces;
 using TimeTwoFix.Core.Entities.UserManagement;
@@ -25,7 +20,6 @@ namespace TimeTwoFix.Application.UserServices.Services
                 throw new Exception("Users not found");
             }
             return res;
-
         }
 
         public async Task<IEnumerable<ApplicationRole>> GetApplicationRoles()

@@ -35,8 +35,6 @@ namespace TimeTwoFix.Web.Mapping
             CreateMap<CreateWareHouseManagerViewModel, ReadUserDto>().ReverseMap();
             CreateMap<CreateWorkshopManagerViewModel, ReadUserDto>().ReverseMap();
             CreateMap<CreateGeneralManagerViewModel, ReadUserDto>().ReverseMap();
-
-
         }
     }
 }

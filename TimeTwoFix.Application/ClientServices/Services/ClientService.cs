@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using TimeTwoFix.Application.Base;
+using TimeTwoFix.Application.ClientServices.Dtos;
 using TimeTwoFix.Core.Entities.ClientManagement;
 using TimeTwoFix.Core.Interfaces;
-using TimeTwoFix.Application.ClientServices.Dtos;
 
 namespace TimeTwoFix.Application.ClientServices.Services
 {
@@ -36,7 +36,5 @@ namespace TimeTwoFix.Application.ClientServices.Services
             var clientsDto = _mapper.Map<IEnumerable<ReadClientDto>>(res);
             return clientsDto;
         }
-
     }
-
 }

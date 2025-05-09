@@ -27,7 +27,7 @@ namespace TimeTwoFix.Infrastructure.Persistence
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly TimeTwoFixDbContext _context;
+        protected readonly TimeTwoFixDbContext _context;
 
         public UnitOfWork(TimeTwoFixDbContext context,
             UserManager<ApplicationUser> userManager,
@@ -76,7 +76,6 @@ namespace TimeTwoFix.Infrastructure.Persistence
 
         public IBaseRepository<T> GetRepository<T>() where T : class
         {
-
             return new BaseRepository<T>(_context);
         }
 

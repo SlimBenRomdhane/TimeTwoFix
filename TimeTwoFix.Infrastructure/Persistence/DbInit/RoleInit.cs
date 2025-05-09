@@ -1,9 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TimeTwoFix.Core.Entities.UserManagement;
 
 namespace TimeTwoFix.Infrastructure.Persistence.DbInit
@@ -21,7 +16,6 @@ namespace TimeTwoFix.Infrastructure.Persistence.DbInit
                     NormalizedName = "MECHANIC",
                     Description = "Mechanic role with access to work orders and interventions.",
                     IsActive = true
-
                 },
                 new ApplicationRole
                 {

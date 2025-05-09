@@ -4,9 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TimeTwoFix.Core.Entities.UserManagement;
 using TimeTwoFix.Core.Interfaces;
-using TimeTwoFix.Core.Interfaces.Repositories.ClientManagement;
 using TimeTwoFix.Infrastructure.Persistence;
-using TimeTwoFix.Infrastructure.Persistence.Repositories.ClientManagement;
 
 namespace TimeTwoFix.Infrastructure.Extension
 {

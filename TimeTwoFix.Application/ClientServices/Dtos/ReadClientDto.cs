@@ -15,6 +15,6 @@ namespace TimeTwoFix.Application.ClientServices.Dtos
         public List<Vehicle> Vehicles { get; set; } = new List<Vehicle>();
         public DateTime? CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
-
+        public DateTime? DeletedAt { get; set; }
     }
 }

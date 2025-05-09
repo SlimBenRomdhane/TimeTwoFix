@@ -7,14 +7,13 @@ namespace TimeTwoFix.Core.Entities.UserManagement
     {
         [MaxLength(100)]
         public string Description { get; set; }
+
         public bool IsActive { get; set; }
         //public ApplicationRole()
         //{
-
         //}
         //public ApplicationRole(string roleName) : base(roleName)
         //{
         //}
-
     }
 }

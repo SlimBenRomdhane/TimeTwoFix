@@ -1,5 +1,6 @@
-using TimeTwoFix.Infrastructure.Extension;
 using TimeTwoFix.Application.Extension;
+using TimeTwoFix.Infrastructure.Extension;
+
 namespace TimeTwoFix.Web
 {
     public class Program

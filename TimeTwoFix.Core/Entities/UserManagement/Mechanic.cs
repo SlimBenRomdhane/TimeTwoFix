@@ -16,6 +16,5 @@ namespace TimeTwoFix.Core.Entities.UserManagement
         public bool AbleToShift { get; set; }
 
         public ICollection<Intervention> Interventions { get; set; }
-
     }
 }

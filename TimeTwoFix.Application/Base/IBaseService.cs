@@ -11,5 +11,9 @@
         Task<T?> GetByIdAsyncServiceGeneric(int id);
 
         Task<IEnumerable<T>> GetAllAsyncServiceGeneric();
+
+        Task AttachAsyncServiceGeneric(T entity);
+
+        Task DetachAsyncServiceGeneric(T entity);
     }
 }

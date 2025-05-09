@@ -7,7 +7,6 @@ namespace TimeTwoFix.Application.Extension
     {
         public static IServiceCollection RegisterApplicationServices(this IServiceCollection services)
         {
-
             services.AddScoped<IClientServices, TimeTwoFix.Application.ClientServices.Services.ClientService>();
             return services;
         }

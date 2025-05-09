@@ -36,7 +36,9 @@ namespace TimeTwoFix.Core.Interfaces
         //IGeneralManagerRepository GeneralManagers { get; }
 
         Task<int> SaveChangesAsync();
+
         IBaseRepository<T> GetRepository<T>() where T : class;
+
         Task<IDbContextTransaction> BeginTransactionAsync();
     }
 }

@@ -84,7 +84,6 @@ namespace TimeTwoFix.Infrastructure.Persistence.Repositories.UserManagement
         {
             var applicationUsers = await _userManager.Users.ToListAsync();
             return applicationUsers;
-
         }
 
         public async Task<IEnumerable<ApplicationRole?>> GetAllRoles()

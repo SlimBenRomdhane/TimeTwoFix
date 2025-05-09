@@ -17,7 +17,6 @@ namespace TimeTwoFix.Web.Mapping
             CreateMap<Client, DeleteClientDto>();
 
             //CreateMap<UpdateClientViewModel, Client>();
-
         }
     }
 }
