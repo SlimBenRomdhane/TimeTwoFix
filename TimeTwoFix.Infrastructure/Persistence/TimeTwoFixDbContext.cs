@@ -51,7 +51,7 @@ namespace TimeTwoFix.Infrastructure.Persistence
                 x.Ignore(c => c.LockoutEnd);
                 x.Ignore(c => c.TwoFactorEnabled);
                 x.Ignore(c => c.SecurityStamp);
-                x.Ignore(c => c.ConcurrencyStamp);
+
                 x.Ignore(c => c.AccessFailedCount);
                 x.Ignore(c => c.NormalizedEmail);
                 x.HasDiscriminator<string>("RoleTypeDiscriminator")
