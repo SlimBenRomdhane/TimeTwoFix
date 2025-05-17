@@ -1,15 +1,15 @@
-﻿@model TimeTwoFix.Web.Models.UserModels.CreateFrontDeskAssistantViewModel
+﻿@model TimeTwoFix.Web.Models.UserModels.CreateGeneralManagerViewModel
 
 @{
-    ViewData["Title"] = "Create Assistant";
+    ViewData["Title"] = "Create General Manager";
 }
 
 <div class="container mt-4">
-    <h1 class="text-center text-primary">Register Front Desk Assistant</h1>
-    <p class="text-center text-muted">Fill in the details below to add a new assistant.</p>
+    <h1 class="text-center text-primary">Register General Manager</h1>
+    <p class="text-center text-muted">Fill in the details below to add a new General Manager.</p>
 
     <div class="card shadow-sm bg-light p-4">
-        <form asp-action="CreateAssistant">
+        <form asp-action="CreateGeneralManager">
             <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
 
             <div class="row g-3">
@@ -40,16 +40,7 @@
                     <input asp-for="ZipCode" class="form-control" />
                     <span asp-validation-for="ZipCode" class="text-danger"></span>
                 </div>
-				<div class="form-group">
-                    <label asp-for="Password" class="form-label text-dark"></label>
-					<input asp-for="Password" class="form-control" />
-					<span asp-validation-for="Password" class="text-danger"></span>
-				</div>
-				<div class="form-group">
-                    <label asp-for="ConfirmPassword" class="form-label text-dark"></label>
-					<input asp-for="ConfirmPassword" class="form-control" />
-					<span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-				</div>
+
                 <div class="col-md-6">
                     <label asp-for="PhoneNumber" class="form-label text-dark"></label>
                     <input asp-for="PhoneNumber" class="form-control" />
@@ -71,38 +62,32 @@
                     <input asp-for="LastEmployer" class="form-control" />
                     <span asp-validation-for="LastEmployer" class="text-danger"></span>
                 </div>
-                <div class="form-group">
-                    <label asp-for="ImageURL" class="control-label"></label>
+
+                <div class="col-md-6">
+                    <label asp-for="OfficeNumber" class="form-label text-dark"></label>
+                    <input asp-for="OfficeNumber" class="form-control" />
+                    <span asp-validation-for="OfficeNumber" class="text-danger"></span>
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="YearsInManagement" class="form-label text-dark"></label>
+                    <input asp-for="YearsInManagement" class="form-control" />
+                    <span asp-validation-for="YearsInManagement" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="HireDate" class="form-label text-dark"></label>
+                    <input asp-for="HireDate" class="form-control" />
+                    <span asp-validation-for="HireDate" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="ImageURL" class="form-label text-dark"></label>
                     <input asp-for="ImageURL" class="form-control" />
                     <span asp-validation-for="ImageURL" class="text-danger"></span>
                 </div>
 
-                <div class="col-md-6">
-                    <label asp-for="WorkStationNumber" class="form-label text-dark"></label>
-                    <input asp-for="WorkStationNumber" class="form-control" />
-                    <span asp-validation-for="WorkStationNumber" class="text-danger"></span>
-                </div>
-                <div class="col-md-6">
-                    <label asp-for="PhoneExtension" class="form-label text-dark"></label>
-                    <input asp-for="PhoneExtension" class="form-control" />
-                    <span asp-validation-for="PhoneExtension" class="text-danger"></span>
-                </div>
-
-                <div class="col-md-12">
-                    <label asp-for="SpokenLanguage" class="form-label text-dark"></label>
-                    <input asp-for="SpokenLanguage" class="form-control" />
-                    <span asp-validation-for="SpokenLanguage" class="text-danger"></span>
-                </div>
-
-                <div class="form-group form-check">
-                    <label class="form-check-label">
-                        <input class="form-check-input" asp-for="BusinessKnowledge" />
-                        @Html.DisplayNameFor(model => model.BusinessKnowledge)
-                    </label>
-                </div>
-
                 <div class="text-center mt-4">
-                    <input type="submit" value="Create Assistant" class="btn btn-primary" />
+                    <input type="submit" value="Create General Manager" class="btn btn-primary" />
                     <a asp-action="Index" class="btn btn-secondary ms-2">Back to List</a>
                 </div>
             </div>

@@ -28,6 +28,10 @@ namespace TimeTwoFix.Web.Models.UserModels
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
+        [Required]
+        [DataType(DataType.Password)]
+        [Compare("Password", ErrorMessage = "Passwords do not match.")]
+        public string ConfirmPassword { get; set; }
 
         public string ImageURL { get; set; }
 
@@ -36,7 +40,7 @@ namespace TimeTwoFix.Web.Models.UserModels
 
         public int YearsOfExperience { get; set; }
         public string LastEmployer { get; set; }
-        public string Status { get; set; }
+        //public string Status { get; set; }
 
         //Warehouse Manager properties
         public string? WarehouseName { get; set; }

@@ -9,77 +9,116 @@
     <p class="text-center text-muted">Fill in the details below to add a new workshop manager.</p>
 
     <div class="card shadow-sm bg-light p-4">
-        <form asp-action="CreateWorkshopManager">
+        <form asp-action="CreateWorkshopManager" method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
 
             <div class="row g-3">
+                <!-- First Name -->
                 <div class="col-md-6">
                     <label asp-for="FirstName" class="form-label text-dark"></label>
                     <input asp-for="FirstName" class="form-control" />
                     <span asp-validation-for="FirstName" class="text-danger"></span>
                 </div>
+
+                <!-- Last Name -->
                 <div class="col-md-6">
                     <label asp-for="LastName" class="form-label text-dark"></label>
                     <input asp-for="LastName" class="form-control" />
                     <span asp-validation-for="LastName" class="text-danger"></span>
                 </div>
 
+                <!-- Address -->
                 <div class="col-md-12">
                     <label asp-for="Address" class="form-label text-dark"></label>
                     <input asp-for="Address" class="form-control" />
                     <span asp-validation-for="Address" class="text-danger"></span>
                 </div>
 
+                <!-- City -->
                 <div class="col-md-6">
                     <label asp-for="City" class="form-label text-dark"></label>
                     <input asp-for="City" class="form-control" />
                     <span asp-validation-for="City" class="text-danger"></span>
                 </div>
+
+                <!-- Zip Code -->
                 <div class="col-md-6">
                     <label asp-for="ZipCode" class="form-label text-dark"></label>
-                    <input asp-for="ZipCode" class="form-control" />
+                    <input asp-for="ZipCode" class="form-control" type="number" />
                     <span asp-validation-for="ZipCode" class="text-danger"></span>
                 </div>
 
+                <!-- Phone Number -->
                 <div class="col-md-6">
                     <label asp-for="PhoneNumber" class="form-label text-dark"></label>
                     <input asp-for="PhoneNumber" class="form-control" />
                     <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                 </div>
+
+                <!-- Email -->
                 <div class="col-md-6">
                     <label asp-for="Email" class="form-label text-dark"></label>
-                    <input asp-for="Email" class="form-control" />
+                    <input asp-for="Email" class="form-control" type="email" />
                     <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
 
+                <!-- Password -->
+                <div class="col-md-6">
+                    <label asp-for="Password" class="form-label text-dark"></label>
+                    <input asp-for="Password" class="form-control" type="password" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="col-md-6">
+                    <label asp-for="ConfirmPassword" class="form-label text-dark"></label>
+                    <input asp-for="ConfirmPassword" class="form-control" type="password" />
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+
+                <!-- Years of Experience -->
                 <div class="col-md-6">
                     <label asp-for="YearsOfExperience" class="form-label text-dark"></label>
-                    <input asp-for="YearsOfExperience" class="form-control" />
+                    <input asp-for="YearsOfExperience" class="form-control" type="number" />
                     <span asp-validation-for="YearsOfExperience" class="text-danger"></span>
                 </div>
+
+                <!-- Last Employer -->
                 <div class="col-md-6">
                     <label asp-for="LastEmployer" class="form-label text-dark"></label>
                     <input asp-for="LastEmployer" class="form-control" />
                     <span asp-validation-for="LastEmployer" class="text-danger"></span>
                 </div>
 
+                <!-- Team Size -->
                 <div class="col-md-6">
                     <label asp-for="TeamSize" class="form-label text-dark"></label>
-                    <input asp-for="TeamSize" class="form-control" />
+                    <input asp-for="TeamSize" class="form-control" type="number" />
                     <span asp-validation-for="TeamSize" class="text-danger"></span>
                 </div>
+
+                <!-- Hire Date -->
                 <div class="col-md-6">
                     <label asp-for="HireDate" class="form-label text-dark"></label>
-                    <input asp-for="HireDate" class="form-control" />
+                    <input asp-for="HireDate" class="form-control" type="date" />
                     <span asp-validation-for="HireDate" class="text-danger"></span>
                 </div>
 
+                <!-- Image URL -->
                 <div class="col-md-6">
                     <label asp-for="ImageURL" class="form-label text-dark"></label>
                     <input asp-for="ImageURL" class="form-control" />
                     <span asp-validation-for="ImageURL" class="text-danger"></span>
                 </div>
 
+                <!-- Status -->
+                <div class="col-md-6">
+                    <label asp-for="Status" class="form-label text-dark"></label>
+                    <input asp-for="Status" class="form-control" />
+                    <span asp-validation-for="Status" class="text-danger"></span>
+                </div>
+
+                <!-- Buttons -->
                 <div class="text-center mt-4">
                     <input type="submit" value="Create Workshop Manager" class="btn btn-primary" />
                     <a asp-action="Index" class="btn btn-secondary ms-2">Back to List</a>
