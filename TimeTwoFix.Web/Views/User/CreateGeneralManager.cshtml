@@ -76,7 +76,7 @@
 
                 <div class="col-md-6">
                     <label asp-for="HireDate" class="form-label text-dark"></label>
-                    <input asp-for="HireDate" class="form-control" />
+                    <input asp-for="HireDate" class="form-control" type="date" />
                     <span asp-validation-for="HireDate" class="text-danger"></span>
                 </div>
 
@@ -84,6 +84,18 @@
                     <label asp-for="ImageURL" class="form-label text-dark"></label>
                     <input asp-for="ImageURL" class="form-control" />
                     <span asp-validation-for="ImageURL" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="Password" class="form-label text-dark">Password</label>
+                    <input asp-for="Password" class="form-control" type="password" placeholder="Enter password..." />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="ConfirmPassword" class="form-label text-dark">Confirm Password</label>
+                    <input asp-for="ConfirmPassword" class="form-control" type="password" placeholder="Confirm password..." />
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                 </div>
 
                 <div class="text-center mt-4">

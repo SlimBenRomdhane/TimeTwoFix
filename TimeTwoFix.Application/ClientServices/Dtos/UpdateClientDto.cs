@@ -5,25 +5,25 @@ namespace TimeTwoFix.Application.ClientServices.Dtos
     public class UpdateClientDto
     {
         [MaxLength(50)]
-        public string FirstName { get; set; }
+        public string? FirstName { get; set; }
 
         [MaxLength(50)]
-        public string LastName { get; set; }
+        public string? LastName { get; set; }
 
         [MaxLength(50)]
-        public string PhoneNumber { get; set; }
+        public string? PhoneNumber { get; set; }
 
         [MaxLength(100)]
-        public string Address { get; set; }
+        public string? Address { get; set; }
 
         [MaxLength(50)]
-        public string City { get; set; }
+        public string? City { get; set; }
 
         [MaxLength(50)]
         [EmailAddress]
-        public string Email { get; set; }
+        public string? Email { get; set; }
 
-        public DateTime? UpdatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
 
         [MaxLength(50)]
         public string? UpdatedBy { get; set; }

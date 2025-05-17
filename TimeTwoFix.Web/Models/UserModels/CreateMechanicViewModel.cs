@@ -33,6 +33,7 @@ namespace TimeTwoFix.Web.Models.UserModels
         [DataType(DataType.Password)]
         [Compare("Password", ErrorMessage = "Passwords do not match.")]
         public string ConfirmPassword { get; set; }
+        [DataType(DataType.ImageUrl)]
 
         public string ImageURL { get; set; }
 

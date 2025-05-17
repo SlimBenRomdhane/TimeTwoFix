@@ -76,7 +76,14 @@
 
                 <div class="col-md-12">
                     <label asp-for="SpokenLanguage" class="form-label text-dark"></label>
-                    <input asp-for="SpokenLanguage" class="form-control" />
+                    <select asp-for="SpokenLanguage" class="form-control">
+                        <option value="">Select a Language</option>
+                        <option value="English">English</option>
+                        <option value="French">French</option>
+                        <option value="Spanish">Spanish</option>
+                        <option value="Arabic">Arabic</option>
+                        <option value="Other">Other</option>
+                    </select>
                     <span asp-validation-for="SpokenLanguage" class="text-danger"></span>
                 </div>
 
@@ -85,6 +92,30 @@
                         <input class="form-check-input" asp-for="BusinessKnowledge" />
                         @Html.DisplayNameFor(model => model.BusinessKnowledge)
                     </label>
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="Password" class="form-label text-dark">Password</label>
+                    <input asp-for="Password" class="form-control" type="password" placeholder="Enter password..." />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="ConfirmPassword" class="form-label text-dark">Confirm Password</label>
+                    <input asp-for="ConfirmPassword" class="form-control" type="password" placeholder="Confirm password..." />
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="HireDate" class="form-label text-dark">Hire Date</label>
+                    <input asp-for="HireDate" class="form-control" type="date" />
+                    <span asp-validation-for="HireDate" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="ImageURL" class="form-label text-dark">Profile Image URL</label>
+                    <input asp-for="ImageURL" class="form-control" placeholder="Enter image URL..." />
+                    <span asp-validation-for="ImageURL" class="text-danger"></span>
                 </div>
 
                 <div class="text-center mt-4">

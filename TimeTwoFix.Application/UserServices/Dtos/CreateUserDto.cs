@@ -1,26 +1,31 @@
-﻿namespace TimeTwoFix.Application.UserServices.Dtos
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace TimeTwoFix.Application.UserServices.Dtos
 {
-    public class ReadUserDto
+    public class CreateUserDto
     {
         ///Displying the user type in the UI
         public string UserType { get; set; }
 
         //Common properties
-        public string UserName { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Address { get; set; }
-        public string City { get; set; }
+        public required string UserName { get; set; }
+        public required string FirstName { get; set; }
+        public required string LastName { get; set; }
+        public required string Address { get; set; }
+        public required string City { get; set; }
         public int ZipCode { get; set; }
-        public string PhoneNumber { get; set; }
-        public string Email { get; set; }
-
-        public string Role { get; set; }
-        public string ImageURL { get; set; }
+        public required string PhoneNumber { get; set; }
+        public string? Email { get; set; }
+        public required string Password { get; set; }
+        public string? ImageURL { get; set; }
         public DateOnly HireDate { get; set; }
         public int YearsOfExperience { get; set; }
-        public string LastEmployer { get; set; }
-        public string Status { get; set; }
+        public required string LastEmployer { get; set; }
+        public string? Status { get; set; }
 
         //Assistant properties
         public string? WorkStationNumber { get; set; }

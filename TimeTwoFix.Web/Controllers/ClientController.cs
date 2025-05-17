@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TimeTwoFix.Application.ClientServices.Dtos;
 using TimeTwoFix.Application.ClientServices.Interfaces;
@@ -8,6 +9,7 @@ using TimeTwoFix.Web.Models.ClientModels;
 
 namespace TimeTwoFix.Web.Controllers
 {
+    [Authorize]
     public class ClientController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

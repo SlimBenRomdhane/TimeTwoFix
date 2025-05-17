@@ -4,9 +4,9 @@ using TimeTwoFix.Core.Entities.ClientManagement;
 
 namespace TimeTwoFix.Application.ClientServices.Mapping
 {
-    public class ClientProfileMappingApplication : Profile
+    public class UserProfileMappingApplication : Profile
     {
-        public ClientProfileMappingApplication()
+        public UserProfileMappingApplication()
         {
             CreateMap<Client, ReadClientDto>().ReverseMap();
             CreateMap<CreateClientDto, Client>();
