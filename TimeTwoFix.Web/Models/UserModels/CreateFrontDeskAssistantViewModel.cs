@@ -42,7 +42,6 @@ namespace TimeTwoFix.Web.Models.UserModels
         public int YearsOfExperience { get; set; }
         public string LastEmployer { get; set; }
 
-
         //Assistant properties
         public string? WorkStationNumber { get; set; }
 

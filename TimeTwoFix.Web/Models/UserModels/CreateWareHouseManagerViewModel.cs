@@ -42,7 +42,6 @@ namespace TimeTwoFix.Web.Models.UserModels
         public int YearsOfExperience { get; set; }
         public string LastEmployer { get; set; }
 
-
         //Warehouse Manager properties
         public string? WarehouseName { get; set; }
 

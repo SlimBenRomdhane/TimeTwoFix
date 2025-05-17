@@ -1,14 +1,15 @@
 ﻿@model TimeTwoFix.Web.Models.UserModels.CreateGeneralManagerViewModel
 
 @{
-    ViewData["Title"] = "Create General Manager";
+    ViewData["Title"] = "CreateGeneralManager";
 }
 
-<div class="container mt-4">
-    <h1 class="text-center text-primary">Register General Manager</h1>
-    <p class="text-center text-muted">Fill in the details below to add a new General Manager.</p>
+<h1>CreateGeneralManager</h1>
 
-    <div class="card shadow-sm bg-light p-4">
+<h4>CreateGeneralManagerViewModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
         <form asp-action="CreateGeneralManager">
             <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
 
@@ -107,8 +108,10 @@
     </div>
 </div>
 
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
 @section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
